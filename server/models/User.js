@@ -1,6 +1,11 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+//import subdocument schemas for Palette, Font, and Image
+const PaletteSchema = require('./Palette');
+const ImageSchema = require('./Image');
+const FontSchema = require('./Font');
+
 const UserSchema = new Schema(
     {
         username: {
@@ -20,24 +25,9 @@ const UserSchema = new Schema(
             required: true,
             minLength: 8
         },
-        palettes: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Palette'
-            }
-        ],
-        images: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Image'
-            }
-        ],
-        fonts: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Font'
-            }
-        ]
+        palettes: [PaletteSchema],
+        images: [ImageSchema],
+        fonts: [FontSchema]
     },
     {
         toJSON: {
