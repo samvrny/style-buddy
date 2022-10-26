@@ -3,7 +3,7 @@ export const searchImage = (query) => {
     return fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=1`);
 };
 
-
+let WebFont; //this was added, likely needs to be removed
 export const randomFont = () => {
     const API_KEY = 'AIzaSyDDiO8nLVRMDaXwrJp61Cdcar5gFmmiR1Q';
     let fontsList = [];

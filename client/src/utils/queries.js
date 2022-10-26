@@ -16,7 +16,7 @@ export const GET_ME = gql`
             alt
     } savedFonts {
     
-    } savedColors {
+    } savedPalettes {
     
     }
   }
