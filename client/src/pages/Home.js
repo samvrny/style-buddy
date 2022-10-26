@@ -58,7 +58,7 @@ const Home = () => {
 
     const handleSaveImage = async (imageId) => {
         // find the book in `searchedBooks` state by the matching id
-        const imageToSave = searchedImage.find((image) => image.id === id);
+        const imageToSave = searchedImage.find((image) => image.id === image.id);
         console.log(imageToSave);
 
         // get token
@@ -98,11 +98,14 @@ const Home = () => {
                     "IMAGE HERE"
                 </div>
                 <button type="submit">Submit</button>
+                {searchedImage.map((image) => {
+                    return(
                 <button onClick={() => handleSaveImage(image.id)}>
                     {savedImageIds?.some((savedImageId) => savedImageId === image.id)
                         ? 'This image has already been saved!'
                         : 'Save this Image!'}
                 </button>
+               )})}
             </form>
             <div class="container">
                 <div class="box">Random Google Font</div>
