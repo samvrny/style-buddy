@@ -84,3 +84,33 @@ export const REMOVE_PALETTE = gql`
   
     }
 `;
+export const REMOVE_IMAGE = gql`
+  mutation removeImage() {
+
+  
+    }
+`;
+export const SAVE_FONT = gql`
+  mutation saveFont() {
+
+  
+    }
+`;
+export const REMOVE_FONT = gql`
+  mutation removeFont() {
+
+  
+    }
+`;
+export const SAVE_PALETTE = gql`
+  mutation savePalette() {
+
+  
+    }
+`;
+export const REMOVE_PALETTE = gql`
+  mutation removePalette() {
+
+  
+    }
+`;
