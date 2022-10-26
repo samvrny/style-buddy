@@ -93,6 +93,10 @@ const Home = () => {
                     <label htmlFor="search">Search Images:</label>
                     <input type="text" defaultValue={searchInput} name="searchInput" />
                 </div>
+
+                <div>
+                    "IMAGE HERE"
+                </div>
                 <button type="submit">Submit</button>
                 <button onClick={() => handleSaveImage(image.id)}>
                     {savedImageIds?.some((savedImageId) => savedImageId === image.id)
