@@ -2,7 +2,14 @@ import './App.css';
 import React from 'react';
 
 import Header from './components/Header';
-import { ApolloProvider } from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+
+
 
 function App() {
   return (
