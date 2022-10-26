@@ -45,3 +45,7 @@ export const randomFont = () => {
     }
     main();
 }
+
+export const randomPalette = () => {
+    //randomize color palette function here!
+}

@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { SAVE_IMAGE } from '../utils/mutations';
 
 import Auth from '../utils/auth';
-import { searchImage, randomFont } from '../utils/API';
+import { searchImage, randomFont, randomPalette } from '../utils/API';
 import { saveImageIds, getSavedImageIds } from '../utils/localStorage';
 
 
@@ -17,10 +17,12 @@ const Home = () => {
 
     const [randomizedFont, setRandomizedFont] = useState(randomFont());
 
+    const [randomizedPalette, setRandomizedPalette] = useState(randomPalette());
+
     const [saveImage, { error }] = useMutation(SAVE_IMAGE);
 
     useEffect(() => {
-        return () => saveImageIds(savedImageIds), randomFont(randomizedFont);
+        return () => saveImageIds(savedImageIds), randomFont(randomizedFont), randomPalette(randomizedPalette);
     });
 
 
@@ -105,7 +107,19 @@ const Home = () => {
             </form>
             <div class="container">
                 <div class="box">Random Google Font</div>
-                <button onClick={() => setRandomizedFont()}>Randomize!</button>
+                <button onClick={() => setRandomizedFont(randomFont())}>Randomize!</button>
+            </div>
+            <div class="container">
+                <div>
+                    color 1 left
+                </div>
+                <div>
+                    color 2 center
+                </div>
+                <div>
+                    color 3 right
+                </div>
+                <button onClick={() => setRandomizedPalette(randomPalette())}>Randomize!</button>
             </div>
         </>
 
