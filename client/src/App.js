@@ -1,5 +1,7 @@
 import './App.css';
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 import Header from './components/Header';
 import {
@@ -9,7 +11,10 @@ import {
   createHttpLink,
 } from '@apollo/client';
 
-
+import Home from './pages/Home';
+import Favorites from './pages/Favorites';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
   return (
