@@ -8,10 +8,16 @@ export const GET_ME = gql`
       email
       imageCount
       savedImages {
-        bookId
-        authors
-        description
-        title
+            id
+            width
+            height
+            photographer
+            src
+            alt
+    } savedFonts {
+    
+    } savedColors {
+    
     }
   }
 }
