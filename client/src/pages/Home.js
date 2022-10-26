@@ -83,6 +83,7 @@ const Home = () => {
         }
     };
 
+    //there is a conditional for the save image button which may need to be removed
     return (
         <>
             <div>
