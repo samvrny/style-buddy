@@ -93,6 +93,7 @@ const Home = () => {
                     <label htmlFor="search">Search Images:</label>
                     <input type="text" defaultValue={searchInput} name="searchInput" />
                 </div>
+
                 <div>
                     "IMAGE HERE"
                 </div>
