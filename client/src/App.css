@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+html,
+body,
+.container {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    font-size: 5em;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.box:hover {
+    color: #0bc;
+    font-size: 7em;
+}
