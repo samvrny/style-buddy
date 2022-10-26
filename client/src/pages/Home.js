@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { SAVE_IMAGE } from '../utils/mutations';
 
 import Auth from '../utils/auth';
-import { searchImage } from '../utils/API';
+import { searchImage, randomFont } from '../utils/API';
 import { saveImageIds, getSavedImageIds } from '../utils/localStorage';
 
 
@@ -15,10 +15,12 @@ const Home = () => {
 
     const [savedImageIds, setSavedImageIds] = useState(getSavedImageIds());
 
+    const [randomizedFont, setRandomizedFont] = useState(randomFont());
+
     const [saveImage, { error }] = useMutation(SAVE_IMAGE);
 
     useEffect(() => {
-        return () => saveImageIds(savedImageIds);
+        return () => saveImageIds(savedImageIds), randomFont(randomizedFont);
     });
 
 
@@ -86,12 +88,22 @@ const Home = () => {
             <div>
                 Home Page!
             </div>
-            <form id="image-search" onSubmit={handleFormSubmit}></form>
+            <form id="image-search" onSubmit={handleFormSubmit}>
                 <div>
                     <label htmlFor="search">Search Images:</label>
                     <input type="text" defaultValue={searchInput} name="searchInput" />
                 </div>
                 <button type="submit">Submit</button>
+                <button onClick={() => handleSaveImage(image.id)}>
+                    {savedImageIds?.some((savedImageId) => savedImageId === image.id)
+                        ? 'This image has already been saved!'
+                        : 'Save this Image!'}
+                </button>
+            </form>
+            <div class="container">
+                <div class="box">Random Google Font</div>
+                <button onClick={() => setRandomizedFont()}>Randomize!</button>
+            </div>
         </>
 
     );
