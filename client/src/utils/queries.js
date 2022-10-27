@@ -6,7 +6,6 @@ export const GET_ME = gql`
       _id
       username
       email
-      imageCount
       savedImages {
             id
             width
@@ -15,9 +14,12 @@ export const GET_ME = gql`
             src
             alt
     } savedFonts {
-    
+      chosenFont
     } savedPalettes {
-    
+      id
+      color1
+      color2
+      color3
     }
   }
 }
