@@ -27,6 +27,7 @@ const resolvers = {
     //     }
     // },
 
+
     Mutation: {
 
         addUser: async (parent, args) => {
@@ -41,7 +42,9 @@ const resolvers = {
             if (!user) {
                 throw new AuthenticationError('Credentials are incorrect');
             }
+
             const correctPw = await user.isCorrectPassword(password);
+
             if (!correctPw) {
                 throw new AuthenticationError('Credentials are incorrect');
             }
