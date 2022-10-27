@@ -59,7 +59,6 @@ const Home = () => {
     };
 
     const handleSaveImage = async (imageId) => {
-        // find the book in `searchedBooks` state by the matching id
         const imageToSave = searchedImage.find((image) => image.id === image.id);
         console.log(imageToSave);
 
