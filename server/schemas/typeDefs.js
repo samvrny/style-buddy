@@ -7,28 +7,30 @@ type User {
 _id: ID
 username: String
 email: String
-palettes: [Palette]
-images: [Image]
-fonts: [Font]
+savedPalettes: [Palette]
+savedImages: [Image]
+savedFonts: [Font]
 
 }
 
 type Palette {
-
-colors: [String]
-icons: [String]
-
+id: ID
+color1: String
+color2: String
+color3: String
 }
 
 type Image {
-
-image: [String]
-
+id: ID
+width: String
+height: String
+photographer: String
+src: String
+alt: String
 }
 
 type Font {
-
-font: [String]
+chosenFont: String!
 
 }
 
