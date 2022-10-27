@@ -25,9 +25,9 @@ const UserSchema = new Schema(
             required: true,
             minLength: 8
         },
-        palettes: [PaletteSchema],
-        images: [ImageSchema],
-        fonts: [FontSchema]
+        savedPalettes: [PaletteSchema],
+        savedImages: [ImageSchema],
+        savedFonts: [FontSchema]
     },
     {
         toJSON: {
