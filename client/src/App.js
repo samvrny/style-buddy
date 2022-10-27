@@ -1,17 +1,29 @@
 import './App.css';
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 
 import Header from './components/Header';
-import { ApolloProvider } from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+
+import Home from './pages/Home';
+import Favorites from './pages/Favorites';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
   return (
-    <ApolloProvider client={client}>
+    //<ApolloProvider client={client}>
             <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-            <Routes>
+            <Switch>
               <Route 
                 path="/" 
                 element={<Home />} 
@@ -28,15 +40,11 @@ function App() {
                 path="/favorites" 
                 element={<Favorites />} 
               />
-              <Route 
-                path="*" 
-                element={<NoMatch />} 
-              />
-            </Routes>
+            </Switch>
           </div>
         </div>
       </Router>
-    </ApolloProvider>
+    //</ApolloProvider>
   );
 }
 

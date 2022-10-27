@@ -15,4 +15,4 @@ const PaletteSchema = new Schema(
     }
 );
 
-module.exports = PaletteSchema;
+module.exports = PaletteSchema; 
