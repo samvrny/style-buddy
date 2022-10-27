@@ -85,6 +85,26 @@ const Home = () => {
     };
 
     //there is a conditional for the save image button which may need to be removed
+
+    const handleRandomFont = async (event) => {
+
+        try {
+            const response = await randomFont();
+            console.log(response, "handleRandomFont RESPONSE");
+
+            if (!response) {
+                throw new Error('something went wrong with randomFont!');
+            }
+
+            const font = response
+            console.log(font, "handleRandomFont FONT VALUE!");
+        } catch (err) {
+            //console.error(err, "RANDOM FONT ERROR!");
+        }
+    };
+
+
+
     return (
         <>
             <div>
@@ -108,11 +128,11 @@ const Home = () => {
                 </button>
                )})}
             </form>
-            <div class="container">
-                <div class="box">Random Google Font</div>
-                <button onClick={() => setRandomizedFont(randomFont())}>Randomize!</button>
+            <div className="container">
+                <div className="box">Random Google Font</div>
+                <button onClick={() => handleRandomFont()}>Randomize!</button>
             </div>
-            <div class="container">
+            <div className="container">
                 <div>
                     color 1 left
                 </div>
