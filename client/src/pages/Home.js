@@ -3,9 +3,10 @@ import { useMutation } from '@apollo/client';
 import { SAVE_IMAGE } from '../utils/mutations';
 
 import Auth from '../utils/auth';
-import { searchImage, randomFont, randomPalette } from '../utils/API';
+import { searchImage, randomFont } from '../utils/API';
 import { saveImageIds, getSavedImageIds } from '../utils/localStorage';
 import WebFont from 'webfontloader';
+import { colors } from '../utils/mockcolors';
 
 
 const Home = () => {
@@ -18,14 +19,13 @@ const Home = () => {
 
     const [randomizedFont, setRandomizedFont] = useState('Your Font Here!');
 
-    const [randomizedPalette, setRandomizedPalette] = useState(randomPalette());
+    const [randomizedPalette, setRandomizedPalette] = useState({id: 1, color1: 'red', color2: 'green', color3: 'blue'});
 
     const [saveImage, { error }] = useMutation(SAVE_IMAGE);
 
-    useEffect(() => {
-        return () => saveImageIds(savedImageIds), randomFont(randomizedFont), randomPalette(randomizedPalette);
-    });
-
+    // useEffect(() => {
+    //     return () => saveImageIds(savedImageIds), randomFont(randomizedFont), randomPalette(randomizedPalette);
+    // });
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -94,7 +94,15 @@ const Home = () => {
             return font;
     };
 
-
+    const handleRandomColors = async () => {
+        const randomIndex = colors[Math.floor(Math.random()*colors.length)]
+        let id = randomIndex.id;
+        let color1 = randomIndex.color1;
+        let color2 = randomIndex.color2;
+        let color3 = randomIndex.color3;
+        setRandomizedPalette({id: id, color1: color1, color2: color2, color3: color3})
+        console.log(randomizedPalette);
+    }
 
     return (
         <>
@@ -125,16 +133,16 @@ const Home = () => {
                 <button onClick={() => handleRandomFont()}>Randomize!</button>
             </div>
             <div className="container">
-                <div>
-                    color 1 left
+                <div style={{backgroundColor: randomizedPalette.color1}}>
+                    {randomizedPalette.color1}
                 </div>
-                <div>
-                    color 2 center
+                <div style={{backgroundColor: randomizedPalette.color2}}>
+                    {randomizedPalette.color2}
                 </div>
-                <div>
-                    color 3 right
+                <div style={{backgroundColor: randomizedPalette.color3}}>
+                    {randomizedPalette.color3}
                 </div>
-                <button onClick={() => setRandomizedPalette(randomPalette())}>Randomize!</button>
+                <button onClick={() => handleRandomColors()}>Randomize!</button>
             </div>
         </>
 
