@@ -41,7 +41,12 @@ type Query {
 type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        
+        saveImage(id: String!, width: [String!], height: [String!], photographer: String, src: String, alt: String): User
+        removeImage(id: String!): User
+        saveFont(chosenFont: String!): User
+        removeFont(chosenFont: String!): User
+        savePalette(id: String!, color1: String, color2: String, color3: String): User
+        removePalette(id: String!): User
 }
 
 type Auth {
