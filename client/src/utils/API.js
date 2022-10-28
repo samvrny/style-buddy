@@ -1,3 +1,5 @@
+import WebFont from 'webfontloader';
+
 // "https://api.pexels.com/v1/search?query=nature&per_page=1"
 export const searchImage = (query) => {
     return fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=1`);
@@ -21,6 +23,12 @@ export const randomFont = () => {
     function loadRandomFont(fontsList) {
         const randomIndex = Math.floor(Math.random() * fontsList.length);
         const choosedFont = fontsList[randomIndex].family;
+        WebFont.load({
+            google: {
+                families: [choosedFont]
+            }
+        });
+
 
         console.log('choosed font: ', choosedFont);
         return choosedFont;
