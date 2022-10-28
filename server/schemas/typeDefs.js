@@ -14,14 +14,14 @@ savedFonts: [Font]
 }
 
 type Palette {
-id: ID
+id: String
 color1: String
 color2: String
 color3: String
 }
 
 type Image {
-id: ID
+id: String
 width: String
 height: String
 photographer: String
