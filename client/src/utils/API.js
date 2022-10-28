@@ -29,6 +29,7 @@ export const randomFont = () => {
             }
         });
 
+
         console.log('choosed font: ', choosedFont);
         return choosedFont;
     }
