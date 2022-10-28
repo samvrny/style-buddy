@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
-import { SAVE_IMAGE } from '../utils/mutations';
+import { SAVE_IMAGE, SAVE_FONT, SAVE_PALETTE } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 import { searchImage, randomFont } from '../utils/API';
@@ -19,9 +19,13 @@ const Home = () => {
 
     const [randomizedFont, setRandomizedFont] = useState('Your Font Here!');
 
-    const [randomizedPalette, setRandomizedPalette] = useState({id: 1, color1: 'red', color2: 'green', color3: 'blue'});
+    const [randomizedPalette, setRandomizedPalette] = useState({id: "1", color1: 'red', color2: 'green', color3: 'blue'});
 
-    const [saveImage, { error }] = useMutation(SAVE_IMAGE);
+    const [saveImage] = useMutation(SAVE_IMAGE);
+
+    const [saveFont] = useMutation(SAVE_FONT);
+
+    const [savePalette] = useMutation(SAVE_PALETTE);
 
     // useEffect(() => {
     //     return () => saveImageIds(savedImageIds), randomFont(randomizedFont), randomPalette(randomizedPalette);
@@ -102,6 +106,39 @@ const Home = () => {
         let color3 = randomIndex.color3;
         setRandomizedPalette({id: id, color1: color1, color2: color2, color3: color3})
         console.log(randomizedPalette);
+    };
+
+    const handleSavePalette = async(randomizedPalette) => {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+        console.log(token);
+        if (!token) {
+          return false;
+        }
+        try {
+            await savePalette({
+                variables: { ...randomizedPalette }
+            })
+        } catch(err) {
+            console.error(err);
+        }
+    };
+    const handleSaveFont = async(randomizedFont) => {
+        console.log('Click');
+        console.log(randomizedFont);
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+        console.log(token);
+        if (!token) {
+          return false;
+        }
+        const chosenFont = { chosenFont: randomizedFont}
+        console.log(chosenFont);
+        try {
+            await saveFont({
+                variables: { ...chosenFont }
+            });
+        } catch(err) {
+            console.error(err);
+        }
     }
 
     return (
@@ -131,6 +168,7 @@ const Home = () => {
                 <div className="box" style={{fontFamily: randomizedFont}}>{randomizedFont}</div>
 
                 <button onClick={() => handleRandomFont()}>Randomize!</button>
+                <button onClick={() => handleSaveFont(randomizedFont)}>TESTING FONT</button>
             </div>
             <div className="container">
                 <div style={{backgroundColor: randomizedPalette.color1}}>
@@ -143,6 +181,7 @@ const Home = () => {
                     {randomizedPalette.color3}
                 </div>
                 <button onClick={() => handleRandomColors()}>Randomize!</button>
+                <button onClick={() => handleSavePalette(randomizedPalette)}>TESTING PALETTE</button>
             </div>
         </>
 

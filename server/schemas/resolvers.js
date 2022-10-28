@@ -27,7 +27,6 @@ const resolvers = {
         }
     },
 
-
     Mutation: {
 
         addUser: async (parent, args) => {
@@ -51,6 +50,30 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
+
+        savePalette: async (parent, args, context) => {
+            if (context.user) {
+                const updatedUser = await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { savedPalettes: args } },
+                    { new: true }
+                );
+                return updatedUser;
+            }
+            throw new AuthenticationError('You have to log in');
+        },
+        
+        saveFont: async (parent, args, context) => {
+            if (context.user) {
+                const updatedUser = await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { savedFonts: args } },
+                    { new: true }
+                )
+                return updatedUser;
+            }
+            throw new AuthenticationError('You have to log in')
+        }
     }
 }
 
