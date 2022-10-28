@@ -5,6 +5,7 @@ import { SAVE_IMAGE } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { searchImage, randomFont, randomPalette } from '../utils/API';
 import { saveImageIds, getSavedImageIds } from '../utils/localStorage';
+import WebFont from 'webfontloader';
 
 
 const Home = () => {
@@ -15,7 +16,7 @@ const Home = () => {
 
     const [savedImageIds, setSavedImageIds] = useState(getSavedImageIds());
 
-    const [randomizedFont, setRandomizedFont] = useState(randomFont());
+    const [randomizedFont, setRandomizedFont] = useState('Your Font Here!');
 
     const [randomizedPalette, setRandomizedPalette] = useState(randomPalette());
 
@@ -88,19 +89,10 @@ const Home = () => {
 
     const handleRandomFont = async (event) => {
 
-        try {
-            const response = await randomFont();
-            console.log(response, "handleRandomFont RESPONSE");
-
-            if (!response) {
-                throw new Error('something went wrong with randomFont!');
-            }
-
-            const font = response
+            const font = await randomFont();
             console.log(font, "handleRandomFont FONT VALUE!");
-        } catch (err) {
-            //console.error(err, "RANDOM FONT ERROR!");
-        }
+            setRandomizedFont(font);
+            return font;
     };
 
 
@@ -129,7 +121,7 @@ const Home = () => {
                )})}
             </form>
             <div className="container">
-                <div className="box">Random Google Font</div>
+                <div className="box" style={{fontFamily: randomizedFont}}>{randomizedFont}</div>
                 <button onClick={() => handleRandomFont()}>Randomize!</button>
             </div>
             <div className="container">
