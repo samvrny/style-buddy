@@ -2,16 +2,22 @@ const { Schema } = require('mongoose');
 
 const PaletteSchema = new Schema(
     {
-        colors: [
-            {
-                type: String
-            }
-        ],
-        icons: [
-            {
-                type: String
-            }
-        ]
+        id: {
+            type: String,
+            required: true,
+        },
+        color1: {
+            type: String,
+            required: true
+        },
+        color2: {
+            type: String,
+            required: true
+        },
+        color3: {
+            type: String,
+            required: true
+        }    
     }
 );
 

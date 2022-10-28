@@ -4,7 +4,6 @@ const FontSchema = new Schema(
     {
         font: {
             type: String,
-            unique: true
         }
     }
 );

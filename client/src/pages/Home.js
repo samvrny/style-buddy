@@ -5,6 +5,8 @@ import { SAVE_IMAGE } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { searchImage, randomFont } from '../utils/API';
 import { saveImageIds, getSavedImageIds } from '../utils/localStorage';
+import WebFont from 'webfontloader';
+import { colors } from '../utils/mockcolors';
 
 
 const Home = () => {
@@ -15,14 +17,15 @@ const Home = () => {
 
     const [savedImageIds, setSavedImageIds] = useState(getSavedImageIds());
 
-    const [randomizedFont, setRandomizedFont] = useState(randomFont());
+    const [randomizedFont, setRandomizedFont] = useState('Your Font Here!');
+
+    const [randomizedPalette, setRandomizedPalette] = useState({id: 1, color1: 'red', color2: 'green', color3: 'blue'});
 
     const [saveImage, { error }] = useMutation(SAVE_IMAGE);
 
-    useEffect(() => {
-        return () => saveImageIds(savedImageIds), randomFont(randomizedFont);
-    });
-
+    // useEffect(() => {
+    //     return () => saveImageIds(savedImageIds), randomFont(randomizedFont), randomPalette(randomizedPalette);
+    // });
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -57,7 +60,6 @@ const Home = () => {
     };
 
     const handleSaveImage = async (imageId) => {
-        // find the book in `searchedBooks` state by the matching id
         const imageToSave = searchedImage.find((image) => image.id === image.id);
         console.log(imageToSave);
 
@@ -84,6 +86,24 @@ const Home = () => {
     };
 
     //there is a conditional for the save image button which may need to be removed
+
+    const handleRandomFont = async (event) => {
+            const font = await randomFont();
+            console.log(font, "handleRandomFont FONT VALUE!");
+            setRandomizedFont(font);
+            return font;
+    };
+
+    const handleRandomColors = async () => {
+        const randomIndex = colors[Math.floor(Math.random()*colors.length)]
+        let id = randomIndex.id;
+        let color1 = randomIndex.color1;
+        let color2 = randomIndex.color2;
+        let color3 = randomIndex.color3;
+        setRandomizedPalette({id: id, color1: color1, color2: color2, color3: color3})
+        console.log(randomizedPalette);
+    }
+
     return (
         <>
             <div>
@@ -94,7 +114,6 @@ const Home = () => {
                     <label htmlFor="search">Search Images:</label>
                     <input type="text" defaultValue={searchInput} name="searchInput" />
                 </div>
-
                 <div>
                     "IMAGE HERE"
                 </div>
@@ -108,9 +127,22 @@ const Home = () => {
                 </button>
                )})}
             </form>
-            <div class="container">
-                <div class="box">Random Google Font</div>
-                <button onClick={() => setRandomizedFont()}>Randomize!</button>
+            <div className="container">
+                <div className="box" style={{fontFamily: randomizedFont}}>{randomizedFont}</div>
+
+                <button onClick={() => handleRandomFont()}>Randomize!</button>
+            </div>
+            <div className="container">
+                <div style={{backgroundColor: randomizedPalette.color1}}>
+                    {randomizedPalette.color1}
+                </div>
+                <div style={{backgroundColor: randomizedPalette.color2}}>
+                    {randomizedPalette.color2}
+                </div>
+                <div style={{backgroundColor: randomizedPalette.color3}}>
+                    {randomizedPalette.color3}
+                </div>
+                <button onClick={() => handleRandomColors()}>Randomize!</button>
             </div>
         </>
 

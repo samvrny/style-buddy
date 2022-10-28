@@ -4,28 +4,28 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
 
-    // Query: {
+    Query: {
 
-    //     me: async (parent, args, context) => {
+        me: async (parent, args, context) => {
 
-    //         if (context.user) {
+            if (context.user) {
 
-    //             const userData = await User.findOne({
+                const userData = await User.findOne({
 
-    //                 _id: context.user._id
-    //             })
-    //                 .select('-__v -password')
-    //                 .populate('palettes')
-    //                 .populate('images')
-    //                 .populate('fonts');
+                    _id: context.user._id
+                })
+                    .select('-__v -password')
+                    .populate('palettes')
+                    .populate('images')
+                    .populate('fonts');
 
-    //             return userData;
+                return userData;
 
-    //         }
+            }
 
-    //         throw new AuthenticationError('You\'re not logged in');
-    //     }
-    // },
+            throw new AuthenticationError('You\'re not logged in');
+        }
+    },
 
     Mutation: {
 

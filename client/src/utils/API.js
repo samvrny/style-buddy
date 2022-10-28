@@ -1,17 +1,15 @@
+import WebFont from 'webfontloader';
+
 // "https://api.pexels.com/v1/search?query=nature&per_page=1"
 export const searchImage = (query) => {
     return fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=1`);
 };
 
-let WebFont; //this was added, likely needs to be removed
+// let WebFont; //this was added, likely needs to be removed
 export const randomFont = () => {
     const API_KEY = 'AIzaSyDDiO8nLVRMDaXwrJp61Cdcar5gFmmiR1Q';
     let fontsList = [];
-    const el = document.querySelector(".box");
-    el.addEventListener('click', () => {
-        const choosedFont = loadRandomFont(fontsList);
-        updateFont(el, choosedFont);
-    });
+
     async function loadFontsList() {
         try {
             const result = await fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=' + API_KEY);
@@ -30,18 +28,19 @@ export const randomFont = () => {
                 families: [choosedFont]
             }
         });
+
+
         console.log('choosed font: ', choosedFont);
         return choosedFont;
     }
-    function updateFont(el, choosedFont) {
-        el = document.querySelector(".box");
-        el.style.fontFamily = choosedFont;
-        el.setAttribute('title', choosedFont);
-    }
+
     async function main() {
         fontsList = await loadFontsList();
         const choosedFont = loadRandomFont(fontsList);
-        updateFont(el, choosedFont);
+        console.log(choosedFont, "MAIN FUNCTION RETURMN");
+        return choosedFont;
     }
+
     main();
+    return main();
 }
