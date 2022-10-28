@@ -2,7 +2,7 @@ const { Schema } = require('mongoose');
 
 const FontSchema = new Schema(
     {
-        font: {
+        chosenFont: {
             type: String,
         }
     }
