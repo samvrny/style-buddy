@@ -5,7 +5,6 @@ const PaletteSchema = new Schema(
         id: {
             type: String,
             required: true,
-            unique: true
         },
         color1: {
             type: String,

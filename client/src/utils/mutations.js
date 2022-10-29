@@ -61,7 +61,7 @@ export const REMOVE_IMAGE = gql`
     }
 `;
 export const SAVE_FONT = gql`
-  mutation saveFont($chosenFont: String!) {
+  mutation saveFont($chosenFont: String) {
     saveFont(chosenFont: $chosenFont) {
       savedFonts{
             chosenFont
@@ -69,7 +69,7 @@ export const SAVE_FONT = gql`
             _id
             username
             email
-            fontCount
+            
       }
     }
 `;
@@ -79,7 +79,6 @@ export const REMOVE_FONT = gql`
             _id
             username
             email
-            fontCount
             savedFonts{
                 chosenFont
           }
@@ -87,7 +86,7 @@ export const REMOVE_FONT = gql`
     }
 `;
 export const SAVE_PALETTE = gql`
-  mutation savePalette($id: String!, $color1: String, $color2: String, $color3: String) {
+  mutation savePalette($id: String, $color1: String, $color2: String, $color3: String) {
     savePalette(id: $id, color1: $color1, color2: $color2, color3: $color3) {
       savedPalettes{
             id
@@ -98,7 +97,7 @@ export const SAVE_PALETTE = gql`
             _id
             username
             email
-            paletteCount
+
       }
     }
 `;
@@ -108,7 +107,6 @@ export const REMOVE_PALETTE = gql`
             _id
             username
             email
-            paletteCount
             savedPalettes {
                 id
                 color1
