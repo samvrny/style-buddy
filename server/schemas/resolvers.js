@@ -61,6 +61,7 @@ const resolvers = {
                 );
                 return updatedUser;
             }
+
             throw new AuthenticationError('Please log in first');
         },
 
@@ -73,6 +74,7 @@ const resolvers = {
                 )
                 return updatedUser;
             }
+
             throw new AuthenticationError('Please log in first')
         },
 
@@ -125,7 +127,6 @@ const resolvers = {
             }
             throw new AuthenticationError('Please log in first');
         }
-
     }
 }
 
