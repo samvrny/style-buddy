@@ -15,6 +15,7 @@ const Favorites = () => {
     const [removePalette] = useMutation(REMOVE_PALETTE);
     const [removeFont] = useMutation(REMOVE_FONT);
 
+
     if (loading) {
         return <h2>LOADING...</h2>
     }
@@ -37,6 +38,7 @@ const Favorites = () => {
         }
     };
 
+
     const handleRemoveFont = async (chosenFont) => {
         console.log(chosenFont)
         console.log('Click')
@@ -53,6 +55,7 @@ const Favorites = () => {
         } catch(err) {
             console.error(err)
         }
+
     }
 
     const handleRemoveImage = async (_id) => {
