@@ -14,7 +14,6 @@ export const searchImage = async (searchInput) => {
     return data; 
 };
 
-// let WebFont; //this was added, likely needs to be removed
 export const randomFont = () => {
     const API_KEY = 'AIzaSyDDiO8nLVRMDaXwrJp61Cdcar5gFmmiR1Q';
     let fontsList = [];
