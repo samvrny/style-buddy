@@ -10,13 +10,13 @@ import { colors } from '../utils/mockcolors';
 
 const Home = () => {
 
-    const [searchedImage, setSearchedImage] = useState([]);
+    const [searchedImage, setSearchedImage] = useState({photographer:'', small:''});
 
     const [searchInput, setSearchInput] = useState('');
 
     const [savedImageIds, setSavedImageIds] = useState(getSavedImageIds());
 
-    const [randomizedFont, setRandomizedFont] = useState('Your Font Here!');
+    const [randomizedFont, setRandomizedFont] = useState('Style');
 
     const [randomizedPalette, setRandomizedPalette] = useState({id: "1", color1: 'red', color2: 'green', color3: 'blue'});
 
@@ -30,37 +30,37 @@ const Home = () => {
     //     return () => saveImageIds(savedImageIds), randomFont(randomizedFont), randomPalette(randomizedPalette);
     // });
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
+    // const handleFormSubmit = async (event) => {
+    //     event.preventDefault();
 
-        if (!searchInput) {
-            return false;
-        }
+    //     if (!searchInput) {
+    //         return false;
+    //     }
 
-        try {
-            const response = await searchImage(searchInput);
+    //     try {
+    //         const response = await searchImage(searchInput);
 
-            if (!response.ok) {
-                throw new Error('something went wrong!');
-            }
+    //         if (!response.ok) {
+    //             throw new Error('something went wrong!');
+    //         }
 
-            const { items } = await response.json();
+    //         const { items } = await response.json();
 
-            const imageData = items.map((image) => ({
-                id: image.id,
-                width: image.width,
-                height: image.height,
-                photographer: image.photographer,
-                src: image.src.original,
-                alt: image.alt,
-            }));
+    //         const imageData = items.map((image) => ({
+    //             id: image.id,
+    //             width: image.width,
+    //             height: image.height,
+    //             photographer: image.photographer,
+    //             src: image.src.original,
+    //             alt: image.alt,
+    //         }));
 
-            setSearchedImage(imageData);
-            setSearchInput('');
-        } catch (err) {
-            console.error(err);
-        }
-    };
+    //         setSearchedImage(imageData);
+    //         setSearchInput('');
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
+    // };
 
     const handleSaveImage = async (imageId) => {
         const imageToSave = searchedImage.find((image) => image.id === image.id);
@@ -107,6 +107,15 @@ const Home = () => {
         console.log(randomizedPalette);
     };
 
+    const handlePhotoData = async (searchInput) => {
+        console.log(searchInput);
+        const photoData = await searchImage()
+        console.log(photoData, "Click")
+        const photographer = photoData.photographer
+        const small = photoData.photos[0].src.small
+        setSearchedImage({photographer: photographer, small: small})
+    }
+
     const handleSavePalette = async(randomizedPalette) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
         console.log(token);
@@ -142,34 +151,9 @@ const Home = () => {
 
     return (
         <>
-            <div>
-                Home Page!
-            </div>
-            <form id="image-search" onSubmit={handleFormSubmit}>
-                <div>
-                    <label htmlFor="search">Search Images:</label>
-                    <input type="text" defaultValue={searchInput} name="searchInput" />
-                </div>
-                <div>
-                    "IMAGE HERE"
-                </div>
-                <button type="submit">Submit</button>
-                {/* {searchedImage.map((image) => {
-                    return(
-                <button onClick={() => handleSaveImage(image.id)}>
-                    {savedImageIds?.some((savedImageId) => savedImageId === image.id)
-                        ? 'This image has already been saved!'
-                        : 'Save this Image!'}
-                </button>
-               )})} */}
-            </form>
-            <div className="container">
-                <div className="box" style={{fontFamily: randomizedFont}}>{randomizedFont}</div>
-
-                <button onClick={() => handleRandomFont()}>Randomize!</button>
-                <button onClick={() => handleSaveFont(randomizedFont)}>TESTING FONT</button>
-            </div>
-            <div className="container">
+        <div className="container">
+            <div className=" row color-palette">
+                <div className="col-12">
                 <div style={{backgroundColor: randomizedPalette.color1}}>
                     {randomizedPalette.color1}
                 </div>
@@ -181,6 +165,26 @@ const Home = () => {
                 </div>
                 <button onClick={() => handleRandomColors()}>Randomize!</button>
                 <button onClick={() => handleSavePalette(randomizedPalette)}>TESTING PALETTE</button>
+            </div>
+        </div>
+        </div>
+        <div className="row">
+            <form id="image-search" className="col-lg-6">
+                <div>
+                    <label htmlFor="search">Search Images:</label>
+                    <input type="text" defaultValue={searchInput} name="searchInput" />
+                </div>
+                <div>
+                    <img src={searchedImage.small} alt="searched image"></img>
+                </div>
+                <button type='submit' onClick={handlePhotoData()}>Submit</button>
+            </form>
+            <div className="font-box col-lg-6">
+                <div className="box" style={{fontFamily: randomizedFont}}>{randomizedFont}</div>
+
+                <button onClick={() => handleRandomFont()}>Randomize!</button>
+                <button onClick={() => handleSaveFont(randomizedFont)}>TESTING FONT</button>
+                </div>
             </div>
         </>
 
