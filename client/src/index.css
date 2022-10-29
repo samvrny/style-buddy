@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FBFCFF;
 }
 
 code {
@@ -12,6 +13,34 @@ code {
     monospace;
 }
 
-.box {
-  font-family: Sancreek
+
+a {
+  color: purple;
 }
+
+a:hover {
+  color:aquamarine;
+}
+
+.style {
+  font-family: cursive;
+}
+
+.buddy {
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.image-search {
+
+}
+
+.font-box {
+
+}
+
+.color-palette {
+  
+}
+
+
