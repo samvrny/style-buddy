@@ -104,7 +104,7 @@ const Home = () => {
         let color2 = randomIndex.color2;
         let color3 = randomIndex.color3;
         setRandomizedPalette({id: id, color1: color1, color2: color2, color3: color3})
-        console.log(randomizedPalette);
+        //console.log(randomizedPalette);
     };
 
     const handlePhotoData = async (searchInput) => {
@@ -131,15 +131,15 @@ const Home = () => {
         }
     };
     const handleSaveFont = async(randomizedFont) => {
-        console.log('Click');
-        console.log(randomizedFont);
+        //console.log('Click');
+        //console.log(randomizedFont);
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-        console.log(token);
+        //console.log(token);
         if (!token) {
           return false;
         }
         const chosenFont = { chosenFont: randomizedFont}
-        console.log(chosenFont);
+        //console.log(chosenFont);
         try {
             await saveFont({
                 variables: { ...chosenFont }
