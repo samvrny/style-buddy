@@ -11,7 +11,9 @@ const Favorites = () => {
 
     const { loading, data } = useQuery(GET_ME);
     const userData = data?.me || [];
-    const [currentFont, setCurrentFont] = useState('')
+    const [currentFont, setCurrentFont] = useState('');
+    const [removePalette] = useMutation(REMOVE_PALETTE);
+    const [removeFont] = useMutation(REMOVE_FONT);
 
     if (loading) {
         return <h2>LOADING...</h2>
@@ -25,7 +27,15 @@ const Favorites = () => {
         if (!token) {
             return false;
         }
-    }
+
+        try {
+            await removePalette({
+                variables: { id }
+            })
+        } catch(err) {
+            console.error(err);
+        }
+    };
 
     const handleRemoveFont = async (chosenFont) => {
         console.log(chosenFont)
@@ -34,6 +44,14 @@ const Favorites = () => {
 
         if (!token) {
             return false;
+        }
+
+        try {
+            await removeFont({
+                variables: { chosenFont }
+            })
+        } catch(err) {
+            console.error(err)
         }
     }
 
