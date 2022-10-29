@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { SAVE_IMAGE, SAVE_FONT, SAVE_PALETTE } from '../utils/mutations';
-
 import Auth from '../utils/auth';
 import { searchImage, randomFont } from '../utils/API';
 import { saveImageIds, getSavedImageIds } from '../utils/localStorage';
@@ -155,14 +154,14 @@ const Home = () => {
                     "IMAGE HERE"
                 </div>
                 <button type="submit">Submit</button>
-                {searchedImage.map((image) => {
+                {/* {searchedImage.map((image) => {
                     return(
                 <button onClick={() => handleSaveImage(image.id)}>
                     {savedImageIds?.some((savedImageId) => savedImageId === image.id)
                         ? 'This image has already been saved!'
                         : 'Save this Image!'}
                 </button>
-               )})}
+               )})} */}
             </form>
             <div className="container">
                 <div className="box" style={{fontFamily: randomizedFont}}>{randomizedFont}</div>
