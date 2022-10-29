@@ -1,4 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
+const { authMiddleware } = require('../../../../Coding-Challenges/challenge-21/book-search-engine/server/utils/auth');
 const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 
@@ -60,9 +61,9 @@ const resolvers = {
                 );
                 return updatedUser;
             }
-            throw new AuthenticationError('You have to log in');
+            throw new AuthenticationError('Please log in first');
         },
-        
+
         saveFont: async (parent, args, context) => {
             if (context.user) {
                 const updatedUser = await User.findByIdAndUpdate(
@@ -72,8 +73,59 @@ const resolvers = {
                 )
                 return updatedUser;
             }
-            throw new AuthenticationError('You have to log in')
+            throw new AuthenticationError('Please log in first')
+        },
+
+        saveImage: async (parent, args, context) => {
+            if (context.user) {
+                const updatedUser = await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { savedImages: args } },
+                    { new: true }
+                )
+                return updatedUser;
+            }
+            throw new AuthenticationError('Please log in first')
+        },
+
+        removeFont: async (parent, args, context) => {
+            if (context.user) {
+                const updatedUser = await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { savedFonts: { chosenFont: args.chosenFont } } },
+                    { new: true }
+
+                );
+                return updatedUser;
+            }
+            throw new AuthenticationError('Please log in first');
+        },
+
+        removePalette: async (parent, args, context) => {
+            if (context.user) {
+                const updatedUser = await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { savedPalettes: { id: args.id } } },
+                    { new: true }
+
+                );
+                return updatedUser;
+            }
+            throw new AuthenticationError('Please log in first');
+        },
+
+        removeImage: async (parent, args, context) => {
+            if (context.user) {
+                const updatedUser = await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { savedImages: { id: args.id } } },
+                    { new: true }
+                )
+                return updatedUser;
+            }
+            throw new AuthenticationError('Please log in first');
         }
+
     }
 }
 
