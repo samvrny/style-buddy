@@ -108,12 +108,12 @@ const Home = () => {
     };
 
     const handlePhotoData = async (searchInput) => {
-        console.log(searchInput);
-        const photoData = await searchImage()
-        console.log(photoData, "Click")
-        const photographer = photoData.photographer
-        const small = photoData.photos[0].src.small
-        setSearchedImage({photographer: photographer, small: small})
+        // console.log(searchInput);
+        // const photoData = await searchImage()
+        // console.log(photoData, "Click")
+        // const photographer = photoData.photographer
+        // //const small = photoData.photos[0].src.small
+        // setSearchedImage({photographer: photographer, small: small})
     }
 
     const handleSavePalette = async(randomizedPalette) => {
@@ -177,7 +177,7 @@ const Home = () => {
                 <div>
                     <img src={searchedImage.small} alt="searched image"></img>
                 </div>
-                <button type='submit' onClick={handlePhotoData()}>Submit</button>
+                <button type='submit' onClick={() => handlePhotoData()}>Submit</button>
             </form>
             <div className="font-box col-lg-6">
                 <div className="box" style={{fontFamily: randomizedFont}}>{randomizedFont}</div>
