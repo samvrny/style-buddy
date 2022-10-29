@@ -127,6 +127,7 @@ const resolvers = {
             }
             throw new AuthenticationError('Please log in first');
         }
+
     }
 }
 
