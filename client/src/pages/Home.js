@@ -13,15 +13,12 @@ const Home = () => {
     const [searchedImage, setSearchedImage] = useState({ photographer: '', small: '' });
 
     const [searchInput, setSearchInput] = useState('');
-
     const [savedImageIds, setSavedImageIds] = useState(getSavedImageIds());
-
     const [randomizedFont, setRandomizedFont] = useState('Style');
 
     const [randomizedPalette, setRandomizedPalette] = useState({ id: "0", color1: 'red', color2: 'green', color3: 'blue' });
 
     const [saveImage] = useMutation(SAVE_IMAGE);
-
     const [saveFont] = useMutation(SAVE_FONT);
     const [savePalette] = useMutation(SAVE_PALETTE);
     const { loading, data } = useQuery(GET_ME);
@@ -40,36 +37,28 @@ const Home = () => {
     const handleSaveImage = async (imageId) => {
         const imageToSave = searchedImage.find((image) => image.id === image.id);
         console.log(imageToSave);
-
         // get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-
         if (!token) {
             console.log("TOKEN ERROR!");
             return false;
         }
-
         try {
             console.log("TRY saveImage");
-
             await saveImage({
                 variables: { ...imageToSave },
             });
-
-
             setSavedImageIds([...savedImageIds, imageToSave.id]);
         } catch (err) {
             console.error(err);
         }
     };
-
     const handleRandomFont = async (event) => {
         const font = await randomFont();
         console.log(font, "handleRandomFont FONT VALUE!");
         setRandomizedFont(font);
         return font;
     };
-
     const handleRandomColors = async () => {
         const randomIndex = colors[Math.floor(Math.random() * colors.length)]
         let id = randomIndex.id;
@@ -81,7 +70,6 @@ const Home = () => {
             paletteIds.push(palette.id)
         })
     };
-
     const handlePhotoData = async (searchInput) => {
         // console.log(searchInput);
         // const photoData = await searchImage()
@@ -90,7 +78,6 @@ const Home = () => {
         // //const small = photoData.photos[0].src.small
         // setSearchedImage({photographer: photographer, small: small})
     }
-
     const handleSavePalette = (randomizedPalette) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
         console.log(token);
@@ -127,7 +114,6 @@ const Home = () => {
             console.error(err);
         }
     }
-
     return (
         <>
             <div className="container">
@@ -167,7 +153,6 @@ const Home = () => {
                 </form>
                 <div className="font-box col-lg-6">
                     <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
-
                     <button onClick={() => handleRandomFont()}>Randomize!</button>
                     <button onClick={() => handleSaveFont(randomizedFont)}>TESTING FONT</button>
                 </div>
@@ -175,5 +160,4 @@ const Home = () => {
         </>
     );
 };
-
 export default Home;
