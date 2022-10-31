@@ -5,12 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #FBFCFF;
+  background-color: #DFE0E2;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.nav-back {
+  background-color: #AAAAAA;
 }
 
 
@@ -19,28 +23,66 @@ a {
 }
 
 a:hover {
-  color:aquamarine;
+  color: #b7999c;;
 }
 
 .style {
   font-family: cursive;
+  
 }
 
 .buddy {
   font-family: monospace;
   font-weight: bold;
+  text-shadow: 2px 2px 2px whitesmoke
+}
+
+.colors {
+  width: 100%;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-style: oblique;
+}
+
+button {
+  border-radius: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #DFE0E2;
+  border: 2px solid purple;
+  cursor: pointer;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
+  transition-duration: 0.4s;
+  margin: 5px;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: purple;
+  color:  whitesmoke;
+  cursor: pointer;
 }
 
 .image-search {
-
+  margin-top: 40px;
+  text-align: center;
 }
 
 .font-box {
+  text-align: center;
+  margin-top: 30px;
+}
 
+.box {
+  font-size: 50px;
 }
 
 .color-palette {
-  
+  margin-top: 30px;
+  text-align: center;
 }
 
 
