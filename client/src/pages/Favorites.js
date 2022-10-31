@@ -15,6 +15,14 @@ const Favorites = () => {
     const [removePalette] = useMutation(REMOVE_PALETTE);
     const [removeFont] = useMutation(REMOVE_FONT);
 
+    const loadWebFont = async (font) => {
+        WebFont.load({
+            google: {
+                families: [font.chosenFont]
+            }
+        });
+    }
+
 
     if (loading) {
         return <h2>LOADING...</h2>
@@ -88,6 +96,7 @@ const Favorites = () => {
             <div>
                 <h2>My Fonts</h2>
                 {userData.savedFonts.map((font) => {
+                    loadWebFont(font);
                     return (
                         <section key={font._id}>
                             <div style={{ fontFamily: font.chosenFont }}>{font.chosenFont}</div>
