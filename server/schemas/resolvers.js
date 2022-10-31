@@ -1,5 +1,4 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { authMiddleware } = require('../../../../Coding-Challenges/challenge-21/book-search-engine/server/utils/auth');
 const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 
