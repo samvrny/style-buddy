@@ -42,21 +42,17 @@ const Home = () => {
         setIsSavedFont(fontNames?.some((names) => names === randomizedFont))
     })
 
-    const handleSaveImage = async (imageId) => {
-        const imageToSave = searchedImage.find((image) => image.imageId === imageId);
-        console.log(imageToSave);
-        // get token
+    const handleSaveImage = async (searchedImage) => {
+        console.log("SAVE IMAGE", searchedImage)
         const token = Auth.loggedIn() ? Auth.getToken() : null;
+
         if (!token) {
-            console.log("TOKEN ERROR!");
             return false;
         }
         try {
-            console.log("TRY saveImage");
             await saveImage({
-                variables: { ...imageToSave },
+                variables: { ...searchedImage }
             });
-            setSavedImageIds([...savedImageIds, imageToSave.id]);
         } catch (err) {
             console.error(err);
         }
@@ -101,9 +97,13 @@ const Home = () => {
         console.log(searchInput);
         const photoData = await searchImage(searchInput)
         console.log(photoData, "Click")
-        const photographer = photoData.photographer
+        const photographer = photoData.photos[0].photographer
         const small = photoData.photos[0].src.small
-        setSearchedImage({ photographer: photographer, small: small })
+        const imageId = photoData.photos[0].id
+        const string = `${imageId}`
+        console.log(string, "STRING LOG!")
+        const alt = photoData.photos[0].alt
+        setSearchedImage({ photographer: photographer, small: small, imageId: string, alt: alt })
         setSearchInput('')
     };
 
@@ -186,9 +186,9 @@ const Home = () => {
                     <div className="mx-2 mt-2">
                         <input type="text" placeholder="Image Keyword" name="searchInput" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
                         <button className="mt-2 mx-2" type='submit'>Submit</button>
-                        <button className="mt-2 mx-2" onClick={() => handleSaveImage()}>Save image</button>
                     </div>
                 </form>
+                <button className="mt-2 mx-2" onClick={() => handleSaveImage(searchedImage)}>Save image</button>
                 <div className="font-box col-6">
                     <h3>Search Fonts</h3>
                     <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
