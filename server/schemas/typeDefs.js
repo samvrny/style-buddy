@@ -21,7 +21,7 @@ color3: String
 }
 
 type Image {
-id: String
+imageId: String
 photographer: String
 small: String
 alt: String
@@ -39,8 +39,8 @@ type Query {
 type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        saveImage(id: String!, photographer: String, small: String, alt: String): User
-        removeImage(id: String!): User
+        saveImage(imageId: String!, photographer: String, small: String, alt: String): User
+        removeImage(imageId: String!): User
         saveFont(chosenFont: String): User
         removeFont(chosenFont: String!): User
         savePalette(id: String, color1: String, color2: String, color3: String): User

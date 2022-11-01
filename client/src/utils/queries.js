@@ -8,8 +8,10 @@ export const GET_ME = gql`
       email
       savedImages {
             id
+            width
+            height
             photographer
-            small
+            src
             alt
     } savedFonts {
       chosenFont
