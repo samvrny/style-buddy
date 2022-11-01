@@ -146,23 +146,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="row">
-                <form id="image-search" className="col-lg-6">
-                    <div>
-                        <label htmlFor="search">Search Images:</label>
-                        <input type="text" defaultValue={searchInput} name="searchInput" />
-                    </div>
-                    <div>
-                        <img src={searchedImage.small} alt="searched image"></img>
-                    </div>
-                    <button type='submit' onClick={() => handlePhotoData()}>Submit</button>
-                </form>
-                <div className="font-box col-lg-6">
-                    <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
-                    <button onClick={() => handleRandomFont()}>Randomize!</button>
-                    <button onClick={() => handleSaveFont(randomizedFont)}>TESTING FONT</button>
-                </div>
-            </div>
         <div className="row">
             <form onSubmit={handlePhotoData} className="col-6 image-search">
                 <div>
