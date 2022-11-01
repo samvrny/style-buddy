@@ -40,7 +40,7 @@ type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         saveImage(imageId: String, photographer: String, small: String, alt: String): User
-        removeImage(imageId: String): User
+        removeImage(imageId: String!): User
         saveFont(chosenFont: String): User
         removeFont(chosenFont: String!): User
         savePalette(id: String, color1: String, color2: String, color3: String): User
