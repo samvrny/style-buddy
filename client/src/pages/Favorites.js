@@ -15,6 +15,7 @@ const Favorites = () => {
     const [currentFont, setCurrentFont] = useState('');
     const [removePalette] = useMutation(REMOVE_PALETTE);
     const [removeFont] = useMutation(REMOVE_FONT);
+    const [removeImage] = useMutation(REMOVE_IMAGE);
 
     const loadWebFont = async (font) => {
         WebFont.load({
@@ -66,17 +67,25 @@ const Favorites = () => {
                 variables: { chosenFont }
             })
         } catch(err) {
-            console.error(err)
+            console.error(err);
         }
     }
 
-    const handleRemoveImage = async (_id) => {
-        console.log(_id)
+    const handleRemoveImage = async (imageId) => {
+        console.log(imageId)
         console.log('Click')
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
             return false;
+        }
+
+        try {
+            await removeImage({
+                variables: { imageId }
+            })
+        } catch(err) {
+            console.error(err);
         }
     }
 
@@ -116,7 +125,7 @@ const Favorites = () => {
                         <section key={image._id}>
                             <h3>By {image.photographer}</h3>
                             <img src={image.small} alt={image.alt}></img>
-                            <button onClick={() => handleRemoveImage(image._id)}>Remove Image</button>
+                            <button onClick={() => handleRemoveImage(image.imageId)}>Remove Image</button>
                         </section>
                     )
                 })}
