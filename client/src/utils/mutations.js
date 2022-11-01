@@ -25,12 +25,14 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_IMAGE = gql`
-  mutation saveImage($id: String!, $photographer: String, $small: String, $alt: String) {
-    saveImage(id: $id, photographer: $photographer, small: $small, alt: $alt) {
+  mutation saveImage($id: String!, $width: String!, $height: String!, $photographer: String, $src: String, $alt: String) {
+    saveImage(id: $id, width: $width, height: $height, photographer: $photographer, src: $src, alt: $alt) {
         savedImages {
             id
+            width
+            height
             photographer
-            small
+            src
             alt
         }
             _id
