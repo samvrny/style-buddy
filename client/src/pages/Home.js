@@ -7,11 +7,11 @@ import { searchImage, randomFont } from '../utils/API';
 import { saveImageIds, getSavedImageIds } from '../utils/localStorage';
 import WebFont from 'webfontloader';
 import { colors } from '../utils/mockcolors';
-import { callbackify } from 'util';
+//import { callbackify } from 'util';
 
 const Home = () => {
 
-    const [searchedImage, setSearchedImage] = useState({ photographer: '', small: '' });
+    const [searchedImage, setSearchedImage] = useState({ id: '2292837', photographer: 'Ekrulila', small: 'https://images.pexels.com/photos/2292837/pexels-photo-2292837.jpeg?auto=compress&cs=tinysrgb&h=130', alt: "Person Holding White Scroll" });
 
     const [searchInput, setSearchInput] = useState('');
     const [savedImageIds, setSavedImageIds] = useState(getSavedImageIds());
@@ -27,6 +27,8 @@ const Home = () => {
     const [paletteIds, setPaletteIds] = useState([]);
     const [isSavedPalette, setIsSavedPalette] = useState(true)
     const [paletteToSave, setPaletteToSave] = useState('')
+    const [onLoadColor, setOnloadColor] = useState(true)
+    const [onLoadFont, setOnLoadFont] = useState(true)
 
     useEffect(() => {
         paletteIds.push(paletteToSave)
@@ -59,6 +61,7 @@ const Home = () => {
         const font = await randomFont();
         console.log(font, "handleRandomFont FONT VALUE!");
         setRandomizedFont(font);
+        setOnLoadFont(false)
         return font;
     };
 
@@ -77,6 +80,7 @@ const Home = () => {
         userData.savedPalettes.map((palette) => {
             paletteIds.push(palette.id)
         })
+        setOnloadColor(false)
     };
 
     const handlePhotoData = async (event) => {
@@ -132,6 +136,7 @@ const Home = () => {
             <div className="container">
                 <div className=" row color-palette">
                     <div className="col-12">
+                        <h3> Search Palettes</h3>
                         <div style={{ backgroundColor: randomizedPalette.color1 }}>
                             {randomizedPalette.color1}
                         </div>
@@ -142,7 +147,7 @@ const Home = () => {
                             {randomizedPalette.color3}
                         </div>
                         <button onClick={() => handleRandomColors()}>Randomize!</button>
-                        {Auth.loggedIn() && (
+                        {onLoadColor || Auth.loggedIn() && (
                             <button
                                 disabled={isSavedPalette}
                                 onClick={() => handleSavePalette(randomizedPalette)}>
@@ -157,6 +162,7 @@ const Home = () => {
             </div>
 
             <div className="row">
+                <h3>Search Images</h3>
                 <form onSubmit={handlePhotoData} className="col-6 image-search">
                     <div>
                         <img src={searchedImage.small} alt="searched image"></img>
@@ -167,11 +173,14 @@ const Home = () => {
                     </div>
                 </form>
                 <div className="font-box col-6">
+                    <h3>Search Fonts</h3>
                     <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
 
                     <button onClick={() => handleRandomFont()}>Randomize!</button>
-                    {Auth.loggedIn() && ( 
-                    <button onClick={() => handleSaveFont(randomizedFont)}>TESTING FONT</button>
+                    {onLoadFont || Auth.loggedIn() && (
+                        <button
+                            onClick={() => handleSaveFont(randomizedFont)}>Save Font
+                        </button>
                     )}
                 </div>
             </div>
