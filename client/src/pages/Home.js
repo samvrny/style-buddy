@@ -27,14 +27,19 @@ const Home = () => {
     const [paletteIds, setPaletteIds] = useState([]);
     const [isSavedPalette, setIsSavedPalette] = useState(true)
     const [paletteToSave, setPaletteToSave] = useState('')
+
+    const [fontNames, setFontNames] = useState([]);
+    const [isSavedFont, setIsSavedFont] = useState(true);
+    const [fontToSave, setFontToSave] = useState('');
+
     const [onLoadColor, setOnloadColor] = useState(true)
     const [onLoadFont, setOnLoadFont] = useState(true)
 
     useEffect(() => {
         paletteIds.push(paletteToSave)
-        //console.log(paletteIds)
+        fontNames.push(fontToSave)
         setIsSavedPalette(paletteIds?.some((ids) => ids === randomizedPalette.id))
-        //console.log(isSavedPalette)
+        setIsSavedFont(fontNames?.some((names) => names === randomizedFont))
     })
 
     const handleSaveImage = async (imageId) => {
@@ -62,7 +67,14 @@ const Home = () => {
         console.log(font, "handleRandomFont FONT VALUE!");
         setRandomizedFont(font);
         setOnLoadFont(false)
-        return font;
+
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+        if (!token) {
+            return false;
+        }
+        userData.savedFonts.map((font) => {
+            fontNames.push(font)
+        })
     };
 
     const handleRandomColors = async () => {
@@ -130,6 +142,10 @@ const Home = () => {
         } catch (err) {
             console.error(err);
         }
+        userData.savedFonts.map((font) => {
+            paletteIds.push(font)
+        })
+        setFontToSave(randomizedFont)
     }
     return (
         <>
@@ -180,7 +196,12 @@ const Home = () => {
                     <button onClick={() => handleRandomFont()}>Randomize!</button>
                     {onLoadFont || Auth.loggedIn() && (
                         <button
-                            onClick={() => handleSaveFont(randomizedFont)}>Save Font
+                            disabled={isSavedFont}
+                            onClick={() => handleSaveFont(randomizedFont)}>
+                            {isSavedFont
+                                ? 'Font Saved'
+                                : 'Save Font'
+                            }
                         </button>
                     )}
                 </div>
