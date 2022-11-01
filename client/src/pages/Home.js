@@ -38,7 +38,7 @@ const Home = () => {
     })
 
     const handleSaveImage = async (imageId) => {
-        const imageToSave = searchedImage.find((image) => image.id === image.id);
+        const imageToSave = searchedImage.find((image) => image.imageId === imageId);
         console.log(imageToSave);
         // get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -170,6 +170,7 @@ const Home = () => {
                     <div className="mx-2 mt-2">
                         <input type="text" placeholder="Image Keyword" name="searchInput" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
                         <button className="mt-2 mx-2" type='submit'>Submit</button>
+                        <button className="mt-2 mx-2" onClick={() => handleSaveImage()}>Save image</button>
                     </div>
                 </form>
                 <div className="font-box col-6">
