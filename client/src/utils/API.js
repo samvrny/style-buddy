@@ -10,8 +10,19 @@ export const searchImage = async (searchInput) => {
         headers: {"Authorization": "563492ad6f91700001000001d4bda0cf64fd49a4b6ae703c5761017e"}
     } );
     const data = await response.json();
+
+    if (!response.ok || !data.photos.length) {
+         return {
+            photos: [{
+                src: {
+                    small: "https://images.pexels.com/photos/709732/pexels-photo-709732.jpeg?auto=compress&cs=tinysrgb&h=130"
+                }
+            }]
+         }
+    } else {
     console.log(data);
     return data; 
+    }
 };
 
 export const randomFont = () => {
