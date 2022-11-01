@@ -1,3 +1,12 @@
+:root {
+  --light: #dfe0e2;
+  --dark: #AAAAAA;
+  --accent: #EB5160;
+  --primary: purple;
+  --secondary: #B7999C;
+  --white: whitesmoke;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,7 +14,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #FBFCFF;
+  background-color: var(--light);
 }
 
 code {
@@ -13,13 +22,17 @@ code {
     monospace;
 }
 
+.nav-back {
+  background-color: var(--dark);
+}
+
 
 a {
-  color: purple;
+  color: var(--primary);
 }
 
 a:hover {
-  color:aquamarine;
+  color: var(--secondary);
 }
 
 .style {
@@ -29,18 +42,68 @@ a:hover {
 .buddy {
   font-family: monospace;
   font-weight: bold;
+  text-shadow: 2px 2px 2px var(--white);
+}
+
+.colors {
+  width: 100%;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-style: oblique;
+}
+
+button {
+  border-radius: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: var(--light);
+  border: 2px solid var(--primary);
+  cursor: pointer;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
+  transition-duration: 0.4s;
+  margin: 5px;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: var(--primary);
+  color:  var(--white);
+  cursor: pointer;
 }
 
 .image-search {
-
+  margin-top: 40px;
+  text-align: center;
 }
 
 .font-box {
+  text-align: center;
+  margin-top: 30px;
+}
 
+.box {
+  font-size: 50px;
 }
 
 .color-palette {
-  
+  margin-top: 30px;
+  text-align: center;
 }
+
+/* LOGIN STYLES */
+.form-input {
+  margin: 5px;
+}
+
+.login-card {
+  background-color: var(--secondary);
+  text-align: center;
+}
+
+
+/* SIGN UP STYLES */
 
 
