@@ -7,9 +7,7 @@ export const GET_ME = gql`
       username
       email
       savedImages {
-            id
-            width
-            height
+            imageId
             photographer
             src
             alt
