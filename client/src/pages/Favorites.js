@@ -7,7 +7,6 @@ import { GET_ME } from '../utils/queries';
 import { REMOVE_IMAGE, REMOVE_FONT, REMOVE_PALETTE } from '../utils/mutations';
 import WebFont from 'webfontloader';
 import { printIntrospectionSchema } from 'graphql';
-import { useNavigate } from 'react-router-dom';
 
 const Favorites = () => {
 
@@ -25,10 +24,10 @@ const Favorites = () => {
         });
     }
 
-    const navigate = useNavigate();
     useEffect(() => {
-        const goToHomePage = () => navigate('/');
-        if(!Auth) { goToHomePage(); }
+        if(!Auth) {
+            // logic to redirect
+        }
     }, [Auth])
 
     if (loading) {
