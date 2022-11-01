@@ -160,6 +160,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+
             <div className="row">
                 <h3>Search Images</h3>
                 <form onSubmit={handlePhotoData} className="col-6 image-search">
