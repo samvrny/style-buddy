@@ -109,14 +109,17 @@ const Home = () => {
         console.log(randomizedPalette);
     };
 
-    const handlePhotoData = async (searchInput) => {
+    const handlePhotoData = async (event) => {
+        event.preventDefault();
+        console.log("Hello")
         console.log(searchInput);
-        const photoData = await searchImage()
+        const photoData = await searchImage(searchInput)
         console.log(photoData, "Click")
         const photographer = photoData.photographer
         const small = photoData.photos[0].src.small
         setSearchedImage({photographer: photographer, small: small})
-    }
+        setSearchInput('')
+    };
 
     const handleSavePalette = async(randomizedPalette) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -171,14 +174,14 @@ const Home = () => {
         </div>
         </div>
         <div className="row">
-            <form className="col-6 image-search">
+            <form onSubmit={handlePhotoData} className="col-6 image-search">
                 <div>
                     <img src={searchedImage.small} alt="searched image"></img>
                 </div>
                 <div className="mx-2 mt-2">
-                    <input type="text" defaultValue="Image Keyword" name="searchInput" />
+                    <input type="text" placeholder="Image Keyword" name="searchInput" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+                    <button className="mt-2 mx-2" type='submit'>Submit</button>
                 </div>
-                <button className="mt-2 mx-2" type='submit' onClick={handlePhotoData()}>Submit</button>
             </form>
             <div className="font-box col-6">
                 <div className="box" style={{fontFamily: randomizedFont}}>{randomizedFont}</div>
