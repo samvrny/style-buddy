@@ -2,7 +2,7 @@ const { Schema } = require('mongoose');
 
 const ImageSchema = new Schema(
     {
-        id: {
+        imageId: {
             type: String,
             required: true
         },
