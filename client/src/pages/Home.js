@@ -7,6 +7,7 @@ import { searchImage, randomFont } from '../utils/API';
 import { saveImageIds, getSavedImageIds } from '../utils/localStorage';
 import WebFont from 'webfontloader';
 import { colors } from '../utils/mockcolors';
+import { callbackify } from 'util';
 
 const Home = () => {
 
@@ -72,17 +73,20 @@ const Home = () => {
             paletteIds.push(palette.id)
         })
     };
-    
-    const handlePhotoData = async (searchInput) => {
-        // console.log(searchInput);
-        // const photoData = await searchImage()
-        // console.log(photoData, "Click")
-        // const photographer = photoData.photographer
-        // //const small = photoData.photos[0].src.small
-        // setSearchedImage({photographer: photographer, small: small})
-    }
 
-    const handleSavePalette = (randomizedPalette) => {
+    const handlePhotoData = async (event) => {
+        event.preventDefault();
+        console.log("Hello")
+        console.log(searchInput);
+        const photoData = await searchImage(searchInput)
+        console.log(photoData, "Click")
+        const photographer = photoData.photographer
+        const small = photoData.photos[0].src.small
+        setSearchedImage({photographer: photographer, small: small})
+        setSearchInput('')
+    };
+
+    const handleSavePalette = async(randomizedPalette) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
         console.log(token);
         if (!token) {
@@ -133,6 +137,7 @@ const Home = () => {
                             {randomizedPalette.color3}
                         </div>
                         <button onClick={() => handleRandomColors()}>Randomize!</button>
+                        {Auth.loggedIn() && ( 
                         <button
                             disabled={isSavedPalette}
                             onClick={() => handleSavePalette(randomizedPalette)}>
@@ -141,6 +146,7 @@ const Home = () => {
                                 : 'Save Palette'
                             }
                         </button>
+                        )}
                     </div>
                 </div>
             </div>
@@ -159,6 +165,23 @@ const Home = () => {
                     <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
                     <button onClick={() => handleRandomFont()}>Randomize!</button>
                     <button onClick={() => handleSaveFont(randomizedFont)}>TESTING FONT</button>
+                </div>
+            </div>
+        <div className="row">
+            <form onSubmit={handlePhotoData} className="col-6 image-search">
+                <div>
+                    <img src={searchedImage.small} alt="searched image"></img>
+                </div>
+                <div className="mx-2 mt-2">
+                    <input type="text" placeholder="Image Keyword" name="searchInput" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+                    <button className="mt-2 mx-2" type='submit'>Submit</button>
+                </div>
+            </form>
+            <div className="font-box col-6">
+                <div className="box" style={{fontFamily: randomizedFont}}>{randomizedFont}</div>
+
+                <button onClick={() => handleRandomFont()}>Randomize!</button>
+                <button onClick={() => handleSaveFont(randomizedFont)}>TESTING FONT</button>
                 </div>
             </div>
         </>
