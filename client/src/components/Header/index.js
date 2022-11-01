@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-secondary">
+    <header className="nav-back">
       <nav className="container navbar d-flex justify-content-between mx-0">
         <Link to="/">
           <a className="navbar-brand link"><span className="style">Style</span>
