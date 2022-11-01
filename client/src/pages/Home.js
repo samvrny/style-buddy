@@ -30,9 +30,9 @@ const Home = () => {
 
     useEffect(() => {
         paletteIds.push(paletteToSave)
-        console.log(paletteIds)
+        //console.log(paletteIds)
         setIsSavedPalette(paletteIds?.some((ids) => ids === randomizedPalette.id))
-        console.log(isSavedPalette)
+        //console.log(isSavedPalette)
     })
 
     const handleSaveImage = async (imageId) => {
@@ -54,12 +54,14 @@ const Home = () => {
             console.error(err);
         }
     };
+
     const handleRandomFont = async (event) => {
         const font = await randomFont();
         console.log(font, "handleRandomFont FONT VALUE!");
         setRandomizedFont(font);
         return font;
     };
+
     const handleRandomColors = async () => {
         const randomIndex = colors[Math.floor(Math.random() * colors.length)]
         let id = randomIndex.id;
@@ -67,6 +69,11 @@ const Home = () => {
         let color2 = randomIndex.color2;
         let color3 = randomIndex.color3;
         setRandomizedPalette({ id: id, color1: color1, color2: color2, color3: color3 })
+
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+        if (!token) {
+            return false;
+        }
         userData.savedPalettes.map((palette) => {
             paletteIds.push(palette.id)
         })
@@ -80,11 +87,11 @@ const Home = () => {
         console.log(photoData, "Click")
         const photographer = photoData.photographer
         const small = photoData.photos[0].src.small
-        setSearchedImage({photographer: photographer, small: small})
+        setSearchedImage({ photographer: photographer, small: small })
         setSearchInput('')
     };
 
-    const handleSavePalette = async(randomizedPalette) => {
+    const handleSavePalette = async (randomizedPalette) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
         console.log(token);
         if (!token) {
@@ -106,7 +113,7 @@ const Home = () => {
     const handleSaveFont = async (randomizedFont) => {
         //console.log(randomizedFont);
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-        
+
         if (!token) {
             return false;
         }
@@ -135,35 +142,40 @@ const Home = () => {
                             {randomizedPalette.color3}
                         </div>
                         <button onClick={() => handleRandomColors()}>Randomize!</button>
-                        <button
-                            disabled={isSavedPalette}
-                            onClick={() => handleSavePalette(randomizedPalette)}>
-                            {isSavedPalette
-                                ? 'Palette Saved'
-                                : 'Save Palette'
-                            }
-                        </button>
+                        {Auth.loggedIn() && (
+                            <button
+                                disabled={isSavedPalette}
+                                onClick={() => handleSavePalette(randomizedPalette)}>
+                                {isSavedPalette
+                                    ? 'Palette Saved'
+                                    : 'Save Palette'
+                                }
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>
-        <div className="row">
-            <form onSubmit={handlePhotoData} className="col-6 image-search">
-                <div>
-                    <img src={searchedImage.small} alt="searched image"></img>
-                </div>
-                <div className="mx-2 mt-2">
-                    <input type="text" placeholder="Image Keyword" name="searchInput" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
-                    <button className="mt-2 mx-2" type='submit'>Submit</button>
-                </div>
-            </form>
-            <div className="font-box col-6">
-                <div className="box" style={{fontFamily: randomizedFont}}>{randomizedFont}</div>
+            <div className="row">
+                <form onSubmit={handlePhotoData} className="col-6 image-search">
+                    <div>
+                        <img src={searchedImage.small} alt="searched image"></img>
+                    </div>
+                    <div className="mx-2 mt-2">
+                        <input type="text" placeholder="Image Keyword" name="searchInput" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+                        <button className="mt-2 mx-2" type='submit'>Submit</button>
+                    </div>
+                </form>
+                <div className="font-box col-6">
+                    <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
 
-                <button onClick={() => handleRandomFont()}>Randomize!</button>
-                <button onClick={() => handleSaveFont(randomizedFont)}>TESTING FONT</button>
+                    <button onClick={() => handleRandomFont()}>Randomize!</button>
+                    {Auth.loggedIn() && ( 
+                    <button onClick={() => handleSaveFont(randomizedFont)}>TESTING FONT</button>
+                    )}
                 </div>
             </div>
         </>
     );
 };
+
 export default Home;
