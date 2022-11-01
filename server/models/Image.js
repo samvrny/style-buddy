@@ -6,19 +6,11 @@ const ImageSchema = new Schema(
             type: String,
             required: true
         },
-        width: {
-            type: String,
-            required: true
-        },
-        height: {
-            type: String,
-            required: true
-        },
         photographer: {
             type: String,
             required: true
         },
-        src: {
+        small: {
             type: String,
             required: true
         },
