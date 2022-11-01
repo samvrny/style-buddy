@@ -38,7 +38,7 @@ const Home = () => {
     })
 
     const handleSaveImage = async (imageId) => {
-        const imageToSave = searchedImage.find((image) => image.imageId === imageId);
+        // const imageToSave = searchedImage.find((image) => image.imageId === imageId);
         console.log(imageToSave);
         // get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -51,7 +51,7 @@ const Home = () => {
             await saveImage({
                 variables: { ...imageToSave },
             });
-            setSavedImageIds([...savedImageIds, imageToSave.id]);
+            setSavedImageIds([...savedImageIds, imageToSave.imageId]);
         } catch (err) {
             console.error(err);
         }
@@ -91,7 +91,9 @@ const Home = () => {
         console.log(photoData, "Click")
         const photographer = photoData.photographer
         const small = photoData.photos[0].src.small
-        setSearchedImage({ photographer: photographer, small: small })
+        const imageId = photoData.photos[0].id
+        const alt = photoData.photos[0].alt
+        setSearchedImage({ photographer: photographer, small: small, imageId: imageId, alt: alt })
         setSearchInput('')
     };
 

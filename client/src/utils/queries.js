@@ -9,7 +9,7 @@ export const GET_ME = gql`
       savedImages {
             imageId
             photographer
-            src
+            small
             alt
     } savedFonts {
       chosenFont

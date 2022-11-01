@@ -30,7 +30,7 @@ export const SAVE_IMAGE = gql`
         savedImages {
             imageId
             photographer
-            src
+            small
             alt
         }
             _id
@@ -50,7 +50,7 @@ export const REMOVE_IMAGE = gql`
             savedImages {
                 imageId
                 photographer
-                src
+                small
                 alt
         }
       }
