@@ -38,23 +38,23 @@ const Home = () => {
     })
 
     const handleSaveImage = async (imageId) => {
-        // const imageToSave = searchedImage.find((image) => image.imageId === imageId);
-        console.log(imageToSave);
-        // get token
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
-        if (!token) {
-            console.log("TOKEN ERROR!");
-            return false;
-        }
-        try {
-            console.log("TRY saveImage");
-            await saveImage({
-                variables: { ...imageToSave },
-            });
-            setSavedImageIds([...savedImageIds, imageToSave.imageId]);
-        } catch (err) {
-            console.error(err);
-        }
+        // // const imageToSave = searchedImage.find((image) => image.imageId === imageId);
+        // console.log(imageToSave);
+        // // get token
+        // const token = Auth.loggedIn() ? Auth.getToken() : null;
+        // if (!token) {
+        //     console.log("TOKEN ERROR!");
+        //     return false;
+        // }
+        // try {
+        //     console.log("TRY saveImage");
+        //     await saveImage({
+        //         variables: { ...imageToSave },
+        //     });
+        //     setSavedImageIds([...savedImageIds, imageToSave.imageId]);
+        // } catch (err) {
+        //     console.error(err);
+        // }
     };
 
     const handleRandomFont = async (event) => {
