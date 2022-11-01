@@ -26,7 +26,7 @@ export const searchImage = async (searchInput) => {
 };
 
 export const randomFont = () => {
-    const API_KEY = 'AIzaSyDDiO8nLVRMDaXwrJp61Cdcar5gFmmiR1Q';
+    const API_KEY = 'AIzaSyBXXGxt6jlufqgHXZ1r7_GbYqUaPGqalos';
     let fontsList = [];
 
     async function loadFontsList() {
