@@ -23,9 +23,10 @@ const Favorites = () => {
             }
         });
     }
+
     useEffect(() => {
         if(!Auth) {
-            // redirect to home page
+            // logic to redirect
         }
     }, [Auth])
 
