@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
 import { removeImageId } from '../utils/localStorage';
@@ -6,6 +6,7 @@ import { useMutation } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
 import { REMOVE_IMAGE, REMOVE_FONT, REMOVE_PALETTE } from '../utils/mutations';
 import WebFont from 'webfontloader';
+import { printIntrospectionSchema } from 'graphql';
 
 const Favorites = () => {
 
@@ -22,7 +23,11 @@ const Favorites = () => {
             }
         });
     }
-
+    useEffect(() => {
+        if(!Auth) {
+            // redirect to home page
+        }
+    }, [Auth])
 
     if (loading) {
         return <h2>LOADING...</h2>
