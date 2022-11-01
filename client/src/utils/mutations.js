@@ -36,7 +36,6 @@ export const SAVE_IMAGE = gql`
             _id
             username
             email
-            imageCount
       }
     }
 `;
@@ -46,7 +45,6 @@ export const REMOVE_IMAGE = gql`
             _id
             username
             email
-            imageCount
             savedImages {
                 imageId
                 photographer
