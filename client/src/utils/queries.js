@@ -6,6 +6,7 @@ export const GET_ME = gql`
       _id
       username
       email
+<<<<<<< HEAD
       imageCount
       fontCount
       paletteCount
@@ -15,6 +16,12 @@ export const GET_ME = gql`
             height
             photographer
             src
+=======
+      savedImages {
+            imageId
+            photographer
+            small
+>>>>>>> 2f855a55ba0b3010585e49baa818076294ed60b4
             alt
     } savedFonts {
       chosenFont
