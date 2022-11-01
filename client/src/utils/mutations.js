@@ -25,7 +25,7 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_IMAGE = gql`
-  mutation saveImage($imageId: String!, $photographer: String, $small: String, $alt: String) {
+  mutation saveImage($imageId: String, $photographer: String, $small: String, $alt: String) {
     saveImage(imageId: $imageId, photographer: $photographer, small: $small, alt: $alt) {
         savedImages {
             imageId
@@ -36,7 +36,6 @@ export const SAVE_IMAGE = gql`
             _id
             username
             email
-            imageCount
       }
     }
 `;
@@ -46,7 +45,6 @@ export const REMOVE_IMAGE = gql`
             _id
             username
             email
-            imageCount
             savedImages {
                 imageId
                 photographer
