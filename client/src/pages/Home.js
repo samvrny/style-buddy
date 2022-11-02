@@ -178,7 +178,8 @@ const Home = () => {
             </div>
 
             <div className="row">
-                <form onSubmit={handlePhotoData} className="image-search col-6">
+                <div className="col-6">
+                <form onSubmit={handlePhotoData} className="image-search">
                     <div>
                     <h3 className=" ">Images</h3>
                         <img src={searchedImage.small} alt="searched image"></img>
@@ -191,7 +192,7 @@ const Home = () => {
                 {Auth.loggedIn() && (
                     <button 
                         disabled={isSavedImage}
-                        className="mt-2 mx-2" 
+                        className="save-image" 
                         onClick={() => handleSaveImage(searchedImage)}>
                             {isSavedImage
                                 ? 'Image Saved'
@@ -199,6 +200,7 @@ const Home = () => {
                             }
                         </button>
                 )}
+                </div>
                 <div className="font-box col-6">
                     <h3>Fonts</h3>
                     <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
