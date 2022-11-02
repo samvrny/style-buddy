@@ -75,24 +75,24 @@ const Favorites = () => {
         <main>
             <h1 className="favorites">Favorites</h1>
             <div>
-                <h2>My Color Palettes</h2>
+                <h5>My Color Palettes</h5>
                 {!userData.savedPalettes.length && (
                     <p>Please save some color palettes</p>
                 )}
                 {userData.savedPalettes.map((palette) => {
 
                     return (
-                        <section key={palette._id}>
-                            <div style={{ backgroundColor: palette.color1 }}>{palette.color1}</div>
-                            <div style={{ backgroundColor: palette.color2 }}>{palette.color2}</div>
-                            <div style={{ backgroundColor: palette.color3 }}>{palette.color3}</div>
+                        <section className='color-palette width' key={palette._id}>
+                            <div className='colors' style={{ backgroundColor: palette.color1 }}>{palette.color1}</div>
+                            <div className='colors' style={{ backgroundColor: palette.color2 }}>{palette.color2}</div>
+                            <div className='colors' style={{ backgroundColor: palette.color3 }}>{palette.color3}</div>
                             <button onClick={() => handleRemovePalette(palette.id)}>Remove Palette</button>
                         </section>
                     )
                 })}
             </div>
-            <div>
-                <h2>My Fonts</h2>
+            <div className='center'>
+                <h5>My Fonts</h5>
                 {!userData.savedFonts.length && (
                     <p>Please save some fonts</p>
                 )}
@@ -100,21 +100,21 @@ const Favorites = () => {
                     loadWebFont(font);
                     return (
                         <section key={font._id}>
-                            <div style={{ fontFamily: font.chosenFont }}>{font.chosenFont}</div>
+                            <div className='font-size' style={{ fontFamily: font.chosenFont }}>{font.chosenFont}</div>
                             <button onClick={() => handleRemoveFont(font.chosenFont)}>Remove Font</button>
                         </section>
                     )
                 })}
             </div>
-            <div>
-                <h2>My Images</h2>
+            <div className='center'>
+                <h5>My Images</h5>
                 {!userData.savedImages.length && (
                     <p>Please save some images</p>
                 )}
                 {userData.savedImages.map((image) => {
                     return (
-                        <section key={image._id}>
-                            <h3>By {image.photographer}</h3>
+                        <section className='image-container' key={image._id}>
+                            <h6>By {image.photographer}</h6>
                             <img src={image.small} alt={image.alt}></img>
                             <button onClick={() => handleRemoveImage(image.imageId)}>Remove Image</button>
                         </section>

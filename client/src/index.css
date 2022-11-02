@@ -78,6 +78,14 @@ h3 {
   font-family: monospace;
 }
 
+h5 {
+  text-align: center;
+  border-bottom: 2px solid var(--primary);
+  font-family: monospace;
+  margin-top: 18px;
+  font-size: 45px;
+}
+
 .image-search {
   margin-top: 30px;
   text-align: center;
@@ -138,5 +146,84 @@ h2 {
   font-family: monospace;
 }
 
+.favorites-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.width {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.center {
+  text-align: center;
+}
+
+.font-size {
+  font-size: 40px;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+@media screen and (max-width: 1350px) {
+  .signup-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-input {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .login-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sec-h3 {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+  }
+
+  .fir-h3 {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .image {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .media-575 {
+    margin-bottom: 40px;
+  }
+}
