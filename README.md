@@ -42,37 +42,5 @@ Style-Buddy is proudly created and maintained by Alex, Autumn, Gestan, Kelsie, O
 * Olivia's [GitHub profile](https://github.com/OliviaRamsfield)
 * Sam's [GitHub profile](https://github.com/samvrny)
 </br>
-</br>
-**Client Badges**
-</br>
-![apollo badge](https://img.shields.io/badge/apollo%2Fclient-3.7.0-blue)
-</br>
-![react badge](https://img.shields.io/badge/react-%2016.13.1-blue)
-</br>
-![bootstrap badge](https://img.shields.io/badge/bootstrap-4.4.1-blue)
-</br>
-![graphQL badge](https://img.shields.io/badge/graphQL-16.6.0-blue)
-</br>
-![jwt-decode badge](https://img.shields.io/badge/jwt--decode-2.2.0-blue)
-</br>
-![pexels badge](https://img.shields.io/badge/pexels%20API-1.4.0-blue)
-</br>
-![webfontloader badge](https://img.shields.io/badge/webfontloader-1.6.28-blue)
-</br>
-</br>
-**Server Badges**
-</br>
-![bcrypt badge](https://img.shields.io/badge/bcrypt-5.0.0-brightgreen)
-</br>
-![express badge](https://img.shields.io/badge/express-4.17.1-brightgreen)
-</br>
-![graphQL badge](https://img.shields.io/badge/graphQL-15.5.0-brightgreen)
-</br>
-![jsonwebtoken badge](https://img.shields.io/badge/jsonwebtoken-8.5.1-brightgreen)
-</br>
-![mongoose badge](https://img.shields.io/badge/mongoose-5.9.10-brightgreen)
-</br>
-![apollo-server-express badge](https://img.shields.io/badge/apollo--server--express-3.10.3-brightgreen)
-</br>
 
 
