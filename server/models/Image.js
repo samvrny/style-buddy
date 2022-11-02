@@ -2,15 +2,7 @@ const { Schema } = require('mongoose');
 
 const ImageSchema = new Schema(
     {
-        id: {
-            type: String,
-            required: true
-        },
-        width: {
-            type: String,
-            required: true
-        },
-        height: {
+        imageId: {
             type: String,
             required: true
         },
@@ -18,7 +10,7 @@ const ImageSchema = new Schema(
             type: String,
             required: true
         },
-        src: {
+        small: {
             type: String,
             required: true
         },

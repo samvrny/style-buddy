@@ -25,36 +25,30 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_IMAGE = gql`
-  mutation saveImage($id: String!, $width: String!, $height: String!, $photographer: String, $src: String, $alt: String) {
-    saveImage(id: $id, width: $width, height: $height, photographer: $photographer, src: $src, alt: $alt) {
+  mutation saveImage($imageId: String, $photographer: String, $small: String, $alt: String) {
+    saveImage(imageId: $imageId, photographer: $photographer, small: $small, alt: $alt) {
         savedImages {
-            id
-            width
-            height
+            imageId
             photographer
-            src
+            small
             alt
         }
             _id
             username
             email
-            imageCount
       }
     }
 `;
 export const REMOVE_IMAGE = gql`
-  mutation removeImage($id: String!) {
-    removeImage(id: $id) {
+  mutation removeImage($imageId: String!) {
+    removeImage(imageId: $imageId) {
             _id
             username
             email
-            imageCount
             savedImages {
-                id
-                width
-                height
+                imageId
                 photographer
-                src
+                small
                 alt
         }
       }

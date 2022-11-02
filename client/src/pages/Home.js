@@ -7,17 +7,18 @@ import { searchImage, randomFont } from '../utils/API';
 import { saveImageIds, getSavedImageIds } from '../utils/localStorage';
 import WebFont from 'webfontloader';
 import { colors } from '../utils/mockcolors';
-import { callbackify } from 'util';
+import { NoUnusedFragmentsRule } from 'graphql';
+//import { callbackify } from 'util';
 
 const Home = () => {
 
-    const [searchedImage, setSearchedImage] = useState({ photographer: '', small: '' });
+    const [searchedImage, setSearchedImage] = useState({ id: '2292837', photographer: 'Ekrulila', small: 'https://images.pexels.com/photos/2292837/pexels-photo-2292837.jpeg?auto=compress&cs=tinysrgb&h=130', alt: "Person Holding White Scroll" });
 
     const [searchInput, setSearchInput] = useState('');
     const [savedImageIds, setSavedImageIds] = useState(getSavedImageIds());
     const [randomizedFont, setRandomizedFont] = useState('Style');
 
-    const [randomizedPalette, setRandomizedPalette] = useState({ id: "0", color1: 'red', color2: 'green', color3: 'blue' });
+    const [randomizedPalette, setRandomizedPalette] = useState({ id: "0", color1: 'Red', color2: 'Green', color3: 'Blue' });
 
     const [saveImage] = useMutation(SAVE_IMAGE);
     const [saveFont] = useMutation(SAVE_FONT);
@@ -28,38 +29,38 @@ const Home = () => {
     const [isSavedPalette, setIsSavedPalette] = useState(true)
     const [paletteToSave, setPaletteToSave] = useState('')
 
+    const [fontNames, setFontNames] = useState([]);
+    const [isSavedFont, setIsSavedFont] = useState(true);
+    const [fontToSave, setFontToSave] = useState('');
+
+    const [imageIds, setImageIds] = useState([]);
+    const [isSavedImage, setIsSavedImage] = useState(true);
+    const [imageToSave, setImageToSave] = useState('')
+
+    const [onLoadColor, setOnloadColor] = useState(true)
+    const [onLoadFont, setOnLoadFont] = useState(true)
+
     useEffect(() => {
         paletteIds.push(paletteToSave)
-        //console.log(paletteIds)
+        fontNames.push(fontToSave)
+        imageIds.push(imageToSave)
         setIsSavedPalette(paletteIds?.some((ids) => ids === randomizedPalette.id))
-        //console.log(isSavedPalette)
+        setIsSavedFont(fontNames?.some((names) => names === randomizedFont))
+        setIsSavedImage(imageIds?.some((ids) => ids === searchedImage.imageId))
     })
-
-    const handleSaveImage = async (imageId) => {
-        const imageToSave = searchedImage.find((image) => image.id === image.id);
-        console.log(imageToSave);
-        // get token
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
-        if (!token) {
-            console.log("TOKEN ERROR!");
-            return false;
-        }
-        try {
-            console.log("TRY saveImage");
-            await saveImage({
-                variables: { ...imageToSave },
-            });
-            setSavedImageIds([...savedImageIds, imageToSave.id]);
-        } catch (err) {
-            console.error(err);
-        }
-    };
 
     const handleRandomFont = async (event) => {
         const font = await randomFont();
-        console.log(font, "handleRandomFont FONT VALUE!");
         setRandomizedFont(font);
-        return font;
+        setOnLoadFont(false)
+
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+        if (!token) {
+            return false;
+        }
+        userData.savedFonts.map((font) => {
+            fontNames.push(font)
+        })
     };
 
     const handleRandomColors = async () => {
@@ -77,31 +78,36 @@ const Home = () => {
         userData.savedPalettes.map((palette) => {
             paletteIds.push(palette.id)
         })
+        setOnloadColor(false)
     };
 
     const handlePhotoData = async (event) => {
         event.preventDefault();
-        console.log("Hello")
-        console.log(searchInput);
         const photoData = await searchImage(searchInput)
-        console.log(photoData, "Click")
-        const photographer = photoData.photographer
+        const photographer = photoData.photos[0].photographer
         const small = photoData.photos[0].src.small
-<<<<<<< HEAD
         setSearchedImage({photographer: photographer, small: small})
         setSearchInput('')
     };
 
     const handleSavePalette = async(randomizedPalette) => {
-=======
         setSearchedImage({ photographer: photographer, small: small })
+        const imageId = photoData.photos[0].id
+        const string = `${imageId}`
+        const alt = photoData.photos[0].alt
         setSearchInput('')
+
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+        if (!token) {
+            return false;
+        }
+        userData.savedImages.map((image) => {
+            imageIds.push(image.imageId)
+        })
     };
 
     const handleSavePalette = async (randomizedPalette) => {
->>>>>>> 062eeb60f2876ffbfd11007bb0a21770399c593b
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-        console.log(token);
         if (!token) {
             return false;
         }
@@ -119,14 +125,12 @@ const Home = () => {
     };
 
     const handleSaveFont = async (randomizedFont) => {
-        //console.log(randomizedFont);
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
             return false;
         }
         const chosenFont = { chosenFont: randomizedFont }
-        //console.log(chosenFont);
         try {
             await saveFont({
                 variables: { ...chosenFont }
@@ -134,12 +138,37 @@ const Home = () => {
         } catch (err) {
             console.error(err);
         }
+        userData.savedFonts.map((font) => {
+            paletteIds.push(font)
+        })
+        setFontToSave(randomizedFont)
     }
+
+    const handleSaveImage = async (searchedImage) => {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+        try {
+            await saveImage({
+                variables: { ...searchedImage }
+            });
+        } catch (err) {
+            console.error(err);
+        }
+        userData.savedImages.map((image) => {
+            imageIds.push(image.id)
+        })
+        setImageToSave(searchedImage.imageId)
+    };
+
     return (
         <>
             <div className="container">
                 <div className=" row color-palette">
                     <div className="col-12">
+                        <h3> Search Palettes</h3>
                         <div style={{ backgroundColor: randomizedPalette.color1 }}>
                             {randomizedPalette.color1}
                         </div>
@@ -150,7 +179,7 @@ const Home = () => {
                             {randomizedPalette.color3}
                         </div>
                         <button onClick={() => handleRandomColors()}>Randomize!</button>
-                        {Auth.loggedIn() && (
+                        {onLoadColor || Auth.loggedIn() && (
                             <button
                                 disabled={isSavedPalette}
                                 onClick={() => handleSavePalette(randomizedPalette)}>
@@ -163,7 +192,9 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+
             <div className="row">
+                <h3>Search Images</h3>
                 <form onSubmit={handlePhotoData} className="col-6 image-search">
                     <div>
                         <img src={searchedImage.small} alt="searched image"></img>
@@ -173,12 +204,31 @@ const Home = () => {
                         <button className="mt-2 mx-2" type='submit'>Submit</button>
                     </div>
                 </form>
+                {Auth.loggedIn() && (
+                    <button 
+                        disabled={isSavedImage}
+                        className="mt-2 mx-2" 
+                        onClick={() => handleSaveImage(searchedImage)}>
+                            {isSavedImage
+                                ? 'Image Saved'
+                                : 'Save Image'
+                            }
+                        </button>
+                )}
                 <div className="font-box col-6">
+                    <h3>Search Fonts</h3>
                     <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
 
                     <button onClick={() => handleRandomFont()}>Randomize!</button>
-                    {Auth.loggedIn() && ( 
-                    <button onClick={() => handleSaveFont(randomizedFont)}>TESTING FONT</button>
+                    {onLoadFont || Auth.loggedIn() && (
+                        <button
+                            disabled={isSavedFont}
+                            onClick={() => handleSaveFont(randomizedFont)}>
+                            {isSavedFont
+                                ? 'Font Saved'
+                                : 'Save Font'
+                            }
+                        </button>
                     )}
                 </div>
             </div>
