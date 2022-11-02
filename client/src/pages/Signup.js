@@ -43,7 +43,7 @@ const Signup = () => {
         <div className="card">
           <h4 className="card-header sign-up-card">Sign Up</h4>
           <div className="card-body">
-            <form onSubmit={handleFormSubmit}>
+            <form className='signup-flex' onSubmit={handleFormSubmit}>
               <input
                 className="form-input"
                 placeholder="Your username"
