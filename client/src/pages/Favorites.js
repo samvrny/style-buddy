@@ -10,7 +10,6 @@ const Favorites = () => {
 
     const { loading, data } = useQuery(GET_ME);
     const userData = data?.me || [];
-    //const [currentFont, setCurrentFont] = useState('');
     const [removePalette] = useMutation(REMOVE_PALETTE);
     const [removeFont] = useMutation(REMOVE_FONT);
     const [removeImage] = useMutation(REMOVE_IMAGE);
@@ -23,21 +22,12 @@ const Favorites = () => {
         });
     }
 
-    useEffect(() => {
-        if(!Auth) {
-            // logic to redirect
-        }
-    }, [Auth])
-
     if (loading) {
         return <h2>LOADING...</h2>
     }
 
     const handleRemovePalette = async (id) => {
-        console.log(id)
-        console.log('Click')
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-
         if (!token) {
             return false;
         }
@@ -52,10 +42,7 @@ const Favorites = () => {
     };
 
     const handleRemoveFont = async (chosenFont) => {
-        console.log(chosenFont)
-        console.log('Click')
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-
         if (!token) {
             return false;
         }
@@ -70,10 +57,7 @@ const Favorites = () => {
     }
 
     const handleRemoveImage = async (imageId) => {
-        console.log(imageId)
-        console.log('Click')
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-
         if (!token) {
             return false;
         }

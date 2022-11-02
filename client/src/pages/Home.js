@@ -8,11 +8,9 @@ import WebFont from 'webfontloader';
 import { colors } from '../utils/mockcolors';
 
 const Home = () => {
-
     const [searchedImage, setSearchedImage] = useState({ id: '2292837', photographer: 'Ekrulila', small: 'https://images.pexels.com/photos/2292837/pexels-photo-2292837.jpeg?auto=compress&cs=tinysrgb&h=130', alt: "Person Holding White Scroll" });
     const [searchInput, setSearchInput] = useState('');
     const [randomizedFont, setRandomizedFont] = useState('Style');
-
     const [randomizedPalette, setRandomizedPalette] = useState({ id: "0", color1: 'Red', color2: 'Green', color3: 'Blue' });
 
     const [saveImage] = useMutation(SAVE_IMAGE);
@@ -34,6 +32,7 @@ const Home = () => {
 
     const [onLoadColor, setOnloadColor] = useState(true)
     const [onLoadFont, setOnLoadFont] = useState(true)
+    const [onLoadImage, setOnLoadImage] = useState(true)
 
     useEffect(() => {
         paletteIds.push(paletteToSave)
@@ -86,6 +85,7 @@ const Home = () => {
         const alt = photoData.photos[0].alt
         setSearchedImage({ photographer: photographer, small: small, imageId: string, alt: alt })
         setSearchInput('')
+        setOnLoadImage(false)
 
         const token = Auth.loggedIn() ? Auth.getToken() : null;
         if (!token) {
@@ -195,7 +195,7 @@ const Home = () => {
                         <button className="mt-2 mx-2" type='submit'>Submit</button>
                     </div>
                 </form>
-                {Auth.loggedIn() && (
+                {onLoadImage || Auth.loggedIn() && (
                     <button 
                         disabled={isSavedImage}
                         className="save-image" 
