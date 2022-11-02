@@ -4,18 +4,13 @@ import { SAVE_IMAGE, SAVE_FONT, SAVE_PALETTE } from '../utils/mutations';
 import { GET_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import { searchImage, randomFont } from '../utils/API';
-import { saveImageIds, getSavedImageIds } from '../utils/localStorage';
 import WebFont from 'webfontloader';
 import { colors } from '../utils/mockcolors';
-import { NoUnusedFragmentsRule } from 'graphql';
-//import { callbackify } from 'util';
 
 const Home = () => {
 
     const [searchedImage, setSearchedImage] = useState({ id: '2292837', photographer: 'Ekrulila', small: 'https://images.pexels.com/photos/2292837/pexels-photo-2292837.jpeg?auto=compress&cs=tinysrgb&h=130', alt: "Person Holding White Scroll" });
-
     const [searchInput, setSearchInput] = useState('');
-    const [savedImageIds, setSavedImageIds] = useState(getSavedImageIds());
     const [randomizedFont, setRandomizedFont] = useState('Style');
 
     const [randomizedPalette, setRandomizedPalette] = useState({ id: "0", color1: 'Red', color2: 'Green', color3: 'Blue' });
