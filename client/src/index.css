@@ -50,7 +50,6 @@ a:hover {
   margin: auto;
   padding: 10px;
   text-align: center;
-  font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   font-style: oblique;
 }
@@ -74,8 +73,14 @@ button:hover {
   cursor: pointer;
 }
 
+h3 {
+  text-align: center;
+  border-bottom: 2px solid var(--primary);
+  font-family: monospace;
+}
+
 .image-search {
-  margin-top: 40px;
+  margin-top: 30px;
   text-align: center;
 }
 
