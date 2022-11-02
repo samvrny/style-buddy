@@ -10,28 +10,34 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-secondary mb-4 py-2 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
+    <header className="nav-back">
+      <nav className="container navbar d-flex justify-content-between mx-0">
         <Link to="/">
-          <h1>Style-Buddy!</h1>
+          <a className="navbar-brand link"><span className="style">Style</span>
+          <span className="buddy">Buddy</span>
+          </a>
         </Link>
 
-        <nav className="text-center">
+        <div>
           {Auth.loggedIn() ? (
             <>
-              <Link to="/favorites">My Favorites</Link>
-              <a href="/" onClick={logout}>
+              <Link to="/favorites" className="link">My Favorites</Link>
+              <a href="/" className="link pl-2" onClick={logout}>
                 Logout
               </a>
             </>
           ) : (
             <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
+              <Link to="/login">
+                <a className="link">Login</a>
+                </Link>
+              <Link to="/signup">
+                <a className="pl-2 link">Sign Up</a>
+                </Link>
             </>
           )}
-        </nav>
-      </div>
+        </div>
+      </nav>
     </header>
   );
 };

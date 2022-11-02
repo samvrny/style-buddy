@@ -1,4 +1,4 @@
-import './App.css';
+
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
@@ -38,9 +38,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        <div>
           <Header />
-          <div className="container">
+          <div className="">
             <Switch>
               <Route 
                 exact path="/" 
