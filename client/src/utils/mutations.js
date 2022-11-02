@@ -91,7 +91,6 @@ export const SAVE_PALETTE = gql`
             _id
             username
             email
-
       }
     }
 `;

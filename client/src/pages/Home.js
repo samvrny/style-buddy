@@ -163,14 +163,14 @@ const Home = () => {
             <div className="container">
                 <div className=" row color-palette">
                     <div className="col-12">
-                        <h3> Search Palettes</h3>
-                        <div style={{ backgroundColor: randomizedPalette.color1 }}>
+                        <h3>Palettes</h3>
+                        <div className="colors" style={{ backgroundColor: randomizedPalette.color1 }}>
                             {randomizedPalette.color1}
                         </div>
-                        <div style={{ backgroundColor: randomizedPalette.color2 }}>
+                        <div className="colors" style={{ backgroundColor: randomizedPalette.color2 }}>
                             {randomizedPalette.color2}
                         </div>
-                        <div style={{ backgroundColor: randomizedPalette.color3 }}>
+                        <div className="colors" style={{ backgroundColor: randomizedPalette.color3 }}>
                             {randomizedPalette.color3}
                         </div>
                         <button onClick={() => handleRandomColors()}>Randomize!</button>
@@ -189,12 +189,13 @@ const Home = () => {
             </div>
 
             <div className="row">
-                <h3>Search Images</h3>
-                <form onSubmit={handlePhotoData} className="col-6 image-search">
+                <div className="col-6">
+                <form onSubmit={handlePhotoData} className="image-search">
                     <div>
+                    <h3 className=" ">Images</h3>
                         <img src={searchedImage.small} alt="searched image"></img>
                     </div>
-                    <div className="mx-2 mt-2">
+                    <div>
                         <input type="text" placeholder="Image Keyword" name="searchInput" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
                         <button className="mt-2 mx-2" type='submit'>Submit</button>
                     </div>
@@ -202,7 +203,7 @@ const Home = () => {
                 {Auth.loggedIn() && (
                     <button 
                         disabled={isSavedImage}
-                        className="mt-2 mx-2" 
+                        className="save-image" 
                         onClick={() => handleSaveImage(searchedImage)}>
                             {isSavedImage
                                 ? 'Image Saved'
@@ -210,8 +211,9 @@ const Home = () => {
                             }
                         </button>
                 )}
+                </div>
                 <div className="font-box col-6">
-                    <h3>Search Fonts</h3>
+                    <h3>Fonts</h3>
                     <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
 
                     <button onClick={() => handleRandomFont()}>Randomize!</button>
