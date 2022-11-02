@@ -86,8 +86,19 @@ const Home = () => {
         const photoData = await searchImage(searchInput)
         const photographer = photoData.photos[0].photographer
         const small = photoData.photos[0].src.small
-        setSearchedImage({photographer: photographer, small: small})
+        const imageId = photoData.photos[0].id
+        const string = `${imageId}`
+        const alt = photoData.photos[0].alt
+        setSearchedImage({ photographer: photographer, small: small, imageId: string, alt: alt })
         setSearchInput('')
+
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+        if (!token) {
+            return false;
+        }
+        userData.savedImages.map((image) => {
+            imageIds.push(image.imageId)
+        })
     };
 
     const handleSavePalette = async (randomizedPalette) => {
