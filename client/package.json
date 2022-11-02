@@ -1,10 +1,10 @@
 {
     "name": "client",
+    "engines": {
+        "node": "16.16.0"
+      },
     "version": "0.1.0",
     "private": true,
-    "engines": {
-        "node": "16.x"
-      },
     "proxy": "http://localhost:3001/",
     "dependencies": {
         "@apollo/client": "^3.7.0",
