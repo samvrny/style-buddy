@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
-import { removeImageId } from '../utils/localStorage';
 import { useMutation } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
 import { REMOVE_IMAGE, REMOVE_FONT, REMOVE_PALETTE } from '../utils/mutations';
 import WebFont from 'webfontloader';
-import { printIntrospectionSchema } from 'graphql';
 
 const Favorites = () => {
 
     const { loading, data } = useQuery(GET_ME);
     const userData = data?.me || [];
-    const [currentFont, setCurrentFont] = useState('');
+    //const [currentFont, setCurrentFont] = useState('');
     const [removePalette] = useMutation(REMOVE_PALETTE);
     const [removeFont] = useMutation(REMOVE_FONT);
     const [removeImage] = useMutation(REMOVE_IMAGE);
@@ -94,6 +92,9 @@ const Favorites = () => {
             <h1 className="favorites">Favorites</h1>
             <div>
                 <h2>My Color Palettes</h2>
+                {!userData.savedPalettes.length && (
+                    <p>Please save some color palettes</p>
+                )}
                 {userData.savedPalettes.map((palette) => {
 
                     return (
@@ -108,6 +109,9 @@ const Favorites = () => {
             </div>
             <div>
                 <h2>My Fonts</h2>
+                {!userData.savedFonts.length && (
+                    <p>Please save some fonts</p>
+                )}
                 {userData.savedFonts.map((font) => {
                     loadWebFont(font);
                     return (
@@ -120,6 +124,9 @@ const Favorites = () => {
             </div>
             <div>
                 <h2>My Images</h2>
+                {!userData.savedImages.length && (
+                    <p>Please save some images</p>
+                )}
                 {userData.savedImages.map((image) => {
                     return (
                         <section key={image._id}>
