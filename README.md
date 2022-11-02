@@ -21,13 +21,16 @@ While on the homepage, the user can create an account or login using the "login"
 Application is deployed [here](https://www.google.com/).
 </br>
 </br>
-![placeholder](./assets/images/placeholder.png)
+![homepage screenshot](./assets/images/homepageloggedout.PNG)
 </br>
 </br>
-![placeholder](./assets/images/placeholder.png)
+![favorites screenshot](./assets/images/favorites.PNG)
 </br>
 </br>
-![placeholder](./assets/images/placeholder.png)
+![login screenshot](./assets/images/login.PNG)
+</br>
+</br>
+![signup screenshot](./assets/images/signup.PNG)
 
 ## Credits
 Style-Buddy is proudly created and maintained by Alex, Autumn, Gestan, Kelsie, Olivia, and Sam.
