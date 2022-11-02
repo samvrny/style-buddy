@@ -28,6 +28,7 @@ const Favorites = () => {
 
     const handleRemovePalette = async (id) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
+
         if (!token) {
             return false;
         }

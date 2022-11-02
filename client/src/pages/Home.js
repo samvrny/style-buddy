@@ -182,7 +182,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
             <div className="row flex">
                 <div className="col-6">
                 <form onSubmit={handlePhotoData} className="image-search">
@@ -210,7 +209,6 @@ const Home = () => {
                 <div className="font-box col-6">
                     <h3 className='sec-h3'>Fonts</h3>
                     <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
-
                     <button onClick={() => handleRandomFont()}>Randomize!</button>
                     {onLoadFont || Auth.loggedIn() && (
                         <button 
