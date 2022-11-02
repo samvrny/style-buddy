@@ -91,7 +91,7 @@ const Favorites = () => {
 
     return (
         <main>
-            <h1>Favorites Page!</h1>
+            <h1 className="favorites">Favorites</h1>
             <div>
                 <h2>My Color Palettes</h2>
                 {userData.savedPalettes.map((palette) => {
