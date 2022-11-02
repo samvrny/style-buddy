@@ -44,4 +44,3 @@ Style-Buddy is proudly created and maintained by Alex, Autumn, Gestan, Kelsie, O
 </br>
 
 
-
