@@ -6,13 +6,11 @@ import { useMutation } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
 import { REMOVE_IMAGE, REMOVE_FONT, REMOVE_PALETTE } from '../utils/mutations';
 import WebFont from 'webfontloader';
-import { printIntrospectionSchema } from 'graphql';
 
 const Favorites = () => {
 
     const { loading, data } = useQuery(GET_ME);
     const userData = data?.me || [];
-    const [currentFont, setCurrentFont] = useState('');
     const [removePalette] = useMutation(REMOVE_PALETTE);
     const [removeFont] = useMutation(REMOVE_FONT);
     const [removeImage] = useMutation(REMOVE_IMAGE);
