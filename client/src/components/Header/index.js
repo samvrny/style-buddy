@@ -21,8 +21,8 @@ const Header = () => {
         <div>
           {Auth.loggedIn() ? (
             <>
-              <Link to="/favorites">My Favorites</Link>
-              <a href="/" onClick={logout}>
+              <Link to="/favorites" className="link">My Favorites</Link>
+              <a href="/" className="link pl-2" onClick={logout}>
                 Logout
               </a>
             </>

@@ -4,20 +4,13 @@ import { SAVE_IMAGE, SAVE_FONT, SAVE_PALETTE } from '../utils/mutations';
 import { GET_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import { searchImage, randomFont } from '../utils/API';
-import { saveImageIds, getSavedImageIds } from '../utils/localStorage';
 import WebFont from 'webfontloader';
 import { colors } from '../utils/mockcolors';
-import { NoUnusedFragmentsRule } from 'graphql';
-//import { callbackify } from 'util';
 
 const Home = () => {
-
     const [searchedImage, setSearchedImage] = useState({ id: '2292837', photographer: 'Ekrulila', small: 'https://images.pexels.com/photos/2292837/pexels-photo-2292837.jpeg?auto=compress&cs=tinysrgb&h=130', alt: "Person Holding White Scroll" });
-
     const [searchInput, setSearchInput] = useState('');
-    const [savedImageIds, setSavedImageIds] = useState(getSavedImageIds());
     const [randomizedFont, setRandomizedFont] = useState('Style');
-
     const [randomizedPalette, setRandomizedPalette] = useState({ id: "0", color1: 'Red', color2: 'Green', color3: 'Blue' });
 
     const [saveImage] = useMutation(SAVE_IMAGE);
@@ -39,6 +32,7 @@ const Home = () => {
 
     const [onLoadColor, setOnloadColor] = useState(true)
     const [onLoadFont, setOnLoadFont] = useState(true)
+    const [onLoadImage, setOnLoadImage] = useState(true)
 
     useEffect(() => {
         paletteIds.push(paletteToSave)
@@ -91,6 +85,7 @@ const Home = () => {
         const alt = photoData.photos[0].alt
         setSearchedImage({ photographer: photographer, small: small, imageId: string, alt: alt })
         setSearchInput('')
+        setOnLoadImage(false)
 
         const token = Auth.loggedIn() ? Auth.getToken() : null;
         if (!token) {
@@ -163,14 +158,14 @@ const Home = () => {
             <div className="container">
                 <div className=" row color-palette">
                     <div className="col-12">
-                        <h3> Search Palettes</h3>
-                        <div style={{ backgroundColor: randomizedPalette.color1 }}>
+                        <h3 className='fir-h3'>Palettes</h3>
+                        <div className="colors" style={{ backgroundColor: randomizedPalette.color1 }}>
                             {randomizedPalette.color1}
                         </div>
-                        <div style={{ backgroundColor: randomizedPalette.color2 }}>
+                        <div className="colors" style={{ backgroundColor: randomizedPalette.color2 }}>
                             {randomizedPalette.color2}
                         </div>
-                        <div style={{ backgroundColor: randomizedPalette.color3 }}>
+                        <div className="colors" style={{ backgroundColor: randomizedPalette.color3 }}>
                             {randomizedPalette.color3}
                         </div>
                         <button onClick={() => handleRandomColors()}>Randomize!</button>
@@ -187,22 +182,22 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
-            <div className="row">
-                <h3>Search Images</h3>
-                <form onSubmit={handlePhotoData} className="col-6 image-search">
+            <div className="row flex">
+                <div className="col-6">
+                <form onSubmit={handlePhotoData} className="image-search">
                     <div>
-                        <img src={searchedImage.small} alt="searched image"></img>
+                    <h3 className='sec-h3'>Images</h3>
+                        <img className='image' src={searchedImage.small} alt="searched image"></img>
                     </div>
-                    <div className="mx-2 mt-2">
+                    <div>
                         <input type="text" placeholder="Image Keyword" name="searchInput" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
                         <button className="mt-2 mx-2" type='submit'>Submit</button>
                     </div>
                 </form>
-                {Auth.loggedIn() && (
+                {onLoadImage || Auth.loggedIn() && (
                     <button 
                         disabled={isSavedImage}
-                        className="mt-2 mx-2" 
+                        className="save-image" 
                         onClick={() => handleSaveImage(searchedImage)}>
                             {isSavedImage
                                 ? 'Image Saved'
@@ -210,13 +205,14 @@ const Home = () => {
                             }
                         </button>
                 )}
+                </div>
                 <div className="font-box col-6">
-                    <h3>Search Fonts</h3>
+                    <h3 className='sec-h3'>Fonts</h3>
                     <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
-
                     <button onClick={() => handleRandomFont()}>Randomize!</button>
                     {onLoadFont || Auth.loggedIn() && (
-                        <button
+                        <button 
+                            className='media-575'
                             disabled={isSavedFont}
                             onClick={() => handleSaveFont(randomizedFont)}>
                             {isSavedFont
