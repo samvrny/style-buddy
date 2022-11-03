@@ -18,7 +18,7 @@ No installation is required to use the application at the deployed website. To t
 ## Usage
 While on the homepage, the user can create an account or login using the "login" and "signup" buttons in the header along the top of the screen. Whether the user is logged in or not, they'll be able to search our stock image library, view randomized color palettes, and view the randomized fonts. Once the user is logged in, they'll also see a save button for the three tools to be able to save their favorite images, fonts, and color palettes. To view their saved items, the user will select "favorites" in the header. On the favorites page, the user will be able to see a list of all of their favorites. They'll also see a remove option for each category if they'd like to delete any of their saved items. While logged in the user will also see a logout option in the header.
 </br>
-Application is deployed [here](https://www.google.com/).
+Application is deployed [here](https://style-buddy22.herokuapp.com/).
 </br>
 </br>
 ![homepage screenshot](./assets/images/homepageloggedout.PNG)
