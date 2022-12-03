@@ -18,16 +18,19 @@ No installation is required to use the application at the deployed website. To t
 ## Usage
 While on the homepage, the user can create an account or login using the "login" and "signup" buttons in the header along the top of the screen. Whether the user is logged in or not, they'll be able to search our stock image library, view randomized color palettes, and view the randomized fonts. Once the user is logged in, they'll also see a save button for the three tools to be able to save their favorite images, fonts, and color palettes. To view their saved items, the user will select "favorites" in the header. On the favorites page, the user will be able to see a list of all of their favorites. They'll also see a remove option for each category if they'd like to delete any of their saved items. While logged in the user will also see a logout option in the header.
 </br>
-Application is deployed [here](https://www.google.com/).
+Application is deployed [here](https://style-buddy22.herokuapp.com/).
 </br>
 </br>
-![placeholder](./assets/images/placeholder.png)
+![homepage screenshot](./assets/images/homepageloggedout.PNG)
 </br>
 </br>
-![placeholder](./assets/images/placeholder.png)
+![favorites screenshot](./assets/images/favorites.PNG)
 </br>
 </br>
-![placeholder](./assets/images/placeholder.png)
+![login screenshot](./assets/images/login.PNG)
+</br>
+</br>
+![signup screenshot](./assets/images/signup.PNG)
 
 ## Credits
 Style-Buddy is proudly created and maintained by Alex, Autumn, Gestan, Kelsie, Olivia, and Sam.
@@ -39,25 +42,5 @@ Style-Buddy is proudly created and maintained by Alex, Autumn, Gestan, Kelsie, O
 * Olivia's [GitHub profile](https://github.com/OliviaRamsfield)
 * Sam's [GitHub profile](https://github.com/samvrny)
 </br>
-</br>
-**Client Badges**
-</br>
-![apollo badge](https://img.shields.io/badge/apollo%2Fclient-3.7.0-blue)
-![react badge](https://img.shields.io/badge/react-%2016.13.1-blue)
-![bootstrap badge](https://img.shields.io/badge/bootstrap-4.4.1-blue)
-![graphQL badge](https://img.shields.io/badge/graphQL-16.6.0-blue)
-![jwt-decode badge](https://img.shields.io/badge/jwt--decode-2.2.0-blue)
-![pexels badge](https://img.shields.io/badge/pexels%20API-1.4.0-blue)
-![webfontloader badge](https://img.shields.io/badge/webfontloader-1.6.28-blue)
-</br>
-</br>
-**Server Badges**
-</br>
-![bcrypt badge](https://img.shields.io/badge/bcrypt-5.0.0-brightgreen)
-![express badge](https://img.shields.io/badge/express-4.17.1-brightgreen)
-![graphQL badge](https://img.shields.io/badge/graphQL-15.5.0-brightgreen)
-![jsonwebtoken badge](https://img.shields.io/badge/jsonwebtoken-8.5.1-brightgreen)
-![mongoose badge](https://img.shields.io/badge/mongoose-5.9.10-brightgreen)
-![apollo-server-express badge](https://img.shields.io/badge/apollo--server--express-3.10.3-brightgreen)
 
 

@@ -158,7 +158,11 @@ const Home = () => {
             <div className="container">
                 <div className=" row color-palette">
                     <div className="col-12">
+<<<<<<< HEAD
                         <h3>Palettes</h3>
+=======
+                        <h3 className='fir-h3'>Palettes</h3>
+>>>>>>> main
                         <div className="colors" style={{ backgroundColor: randomizedPalette.color1 }}>
                             {randomizedPalette.color1}
                         </div>
@@ -182,6 +186,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
 
             <div className="row">
                 <div className="col-6">
@@ -189,6 +194,14 @@ const Home = () => {
                     <div>
                     <h3 className=" ">Images</h3>
                         <img src={searchedImage.small} alt="searched image"></img>
+=======
+            <div className="row flex">
+                <div className="col-6">
+                <form onSubmit={handlePhotoData} className="image-search">
+                    <div>
+                    <h3 className='sec-h3'>Images</h3>
+                        <img className='image' src={searchedImage.small} alt="searched image"></img>
+>>>>>>> main
                     </div>
                     <div>
                         <input type="text" placeholder="Image Keyword" name="searchInput" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
@@ -208,12 +221,21 @@ const Home = () => {
                 )}
                 </div>
                 <div className="font-box col-6">
+<<<<<<< HEAD
                     <h3>Fonts</h3>
                     <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
 
                     <button onClick={() => handleRandomFont()}>Randomize!</button>
                     {onLoadFont || Auth.loggedIn() && (
                         <button
+=======
+                    <h3 className='sec-h3'>Fonts</h3>
+                    <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
+                    <button onClick={() => handleRandomFont()}>Randomize!</button>
+                    {onLoadFont || Auth.loggedIn() && (
+                        <button 
+                            className='media-575'
+>>>>>>> main
                             disabled={isSavedFont}
                             onClick={() => handleSaveFont(randomizedFont)}>
                             {isSavedFont
