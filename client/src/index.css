@@ -1,9 +1,12 @@
 :root {
   --light: #dfe0e2;
   --dark: #AAAAAA;
+  --darkBlue: #006BA6;
   --primary: purple;
   --secondary: #B7999C;
   --white: whitesmoke;
+  --yellow: #FFBC42;
+  --lightBlue: #0496FF;
 }
 
 body {
@@ -21,27 +24,38 @@ code {
     monospace;
 }
 
-.nav-back {
-  background-color: var(--dark);
+header {
+  background-color: var(--darkBlue);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
-a {
-  color: var(--primary);
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
 }
 
-a:hover {
-  color: var(--white);
+.navbar-brand {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: var(--yellow);
+  font-size: 40px;
 }
 
-.style {
-  font-family: cursive;
+.signup-links a {
+  text-decoration: none;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: var(--yellow);
+  margin: 0px 8px 0px 8px;
+  font-size: 25px;
 }
 
-.buddy {
-  font-family: monospace;
-  font-weight: bold;
-  text-shadow: 2px 2px 2px var(--white);
+.signup-links a:hover {
+  text-decoration: none;
+  color: var(--lightBlue);
 }
 
 .colors {
