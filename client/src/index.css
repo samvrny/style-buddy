@@ -100,9 +100,10 @@ nav {
   width: 100%;
   border: 5px solid var(--charcoal);
   background-color: var(--charcoal);
-  border-radius: 50px;
+  border-radius: 15px;
   height: 300px;
   overflow: hidden;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
 }
 
 .colors {
@@ -115,37 +116,38 @@ nav {
   color: var(--charcoal);
 }
 
-button {
+.color-box h3 {
+  font-size: 50px;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  margin-right: 65%;
+}
+
+.color-box button {
+  margin: 30px 10px 15px 10px;
+  padding: 10px 0px 10px 0px;
+  width: 250px;
   border-radius: 10px;
-  padding: 5px 10px;
-  border: none;
-  background-color: var(--light);
-  border: 2px solid var(--primary);
-  cursor: pointer;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
-  transition-duration: 0.4s;
-  margin: 5px;
-  justify-content: center;
+  border: 3px solid var(--lightBlue);
+  background-color: var(--darkBlue);
+  color: var(--yellow);
+  font-size: 25px;
+  font-weight: 500;
 }
 
-button:hover {
-  background-color: var(--primary);
-  color:  var(--white);
-  cursor: pointer;
+.color-box button:disabled {
+  opacity: 60%;
 }
 
-h3 {
-  text-align: center;
-  border-bottom: 2px solid var(--primary);
-  font-family: monospace;
+.color-box button:hover:disabled {
+  border: 3px solid var(--lightBlue);
+  background-color: var(--darkBlue);
+  color: var(--yellow);
 }
 
-h5 {
-  text-align: center;
-  border-bottom: 2px solid var(--primary);
-  font-family: monospace;
-  margin-top: 18px;
-  font-size: 45px;
+.color-box button:hover {
+  border: 3px solid var(--yellow);
+  color: var(--crayolaYellow);
 }
 
 .image-search {

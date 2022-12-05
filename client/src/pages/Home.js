@@ -169,6 +169,7 @@ const Home = () => {
                             {randomizedPalette.color3}
                         </div>
                     </div>
+                    <div>
                     <button onClick={() => handleRandomColors()}>Randomize!</button>
                     {onLoadColor || Auth.loggedIn() && (
                         <button
@@ -180,6 +181,7 @@ const Home = () => {
                             }
                         </button>
                     )}
+                    </div>
                 </section>
                 <section className='flex column'>
                     <div className="font-box">
