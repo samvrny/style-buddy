@@ -79,7 +79,7 @@ const Home = () => {
         event.preventDefault();
         const photoData = await searchImage(searchInput)
         const photographer = photoData.photos[0].photographer
-        const small = photoData.photos[0].src.small
+        const small = photoData.photos[0].src.medium
         const imageId = photoData.photos[0].id
         const string = `${imageId}`
         const alt = photoData.photos[0].alt
@@ -215,15 +215,15 @@ const Home = () => {
                             )}
                         </div>
                     </div>
-                    <div className='image-box'>
+                    <div className='image-box flex2 column'>
+                        <h3 style={{ fontFamily: 'Bungee Shade' }}>Image Inquirer</h3>
                         <form onSubmit={handlePhotoData} className="image-search">
                             <div>
-                                <h3 style={{ fontFamily: 'Bungee Shade' }}>Images</h3>
-                                <img className='image' src={searchedImage.small} alt="searched image"></img>
+                                <input className='image-input' type="text" placeholder="Image Keyword" name="searchInput" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+                                <button className='image-button' type='submit'>Submit</button>
                             </div>
-                            <div>
-                                <input type="text" placeholder="Image Keyword" name="searchInput" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
-                                <button className="mt-2 mx-2" type='submit'>Submit</button>
+                            <div className='image-holder flex2'>
+                                <img className='image flex2' src={searchedImage.small} alt="searched image"></img>
                             </div>
                         </form>
                         {onLoadImage || Auth.loggedIn() && (

@@ -15,6 +15,8 @@
   --fireRed: #FF1D15;
 }
 
+/* UNIVERSAL STYLES */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -49,7 +51,6 @@ code {
   background: #555;
 }
 
-/* Universal styles */
 .flex {
   display: flex;
   align-items: center;
@@ -95,7 +96,7 @@ button:hover {
   color: var(--crayolaYellow);
 }
 
-/* Header and navigation styles */
+/* HEADER AND NAVIGATION STYLES */
 
 header {
   background-color: var(--darkBlue);
@@ -135,7 +136,7 @@ nav {
   color: var(--lightBlue);
 }
 
-/* Home styles */
+/* HOMEPAGE STYLES */
 
 .color-box {
   width: 90%;
@@ -167,18 +168,16 @@ nav {
   -webkit-text-stroke: 0.3px var(--yellow);
 }
 
-.image-box h3 {
-  font-size: 50px;
-  margin-top: 50px;
-  margin-bottom: 25px;
-  margin-right: 65%;
-}
-
-.font-box h3, .color-box h3 {
+.font-box h3, .color-box h3, .image-box h3 {
   font-size: 50px;
   width: 100%;
   margin-left: 15%;
   margin-bottom: 25px;
+}
+
+.image-box h3 {
+  margin-top: 100px;
+  margin-left: 30%;
 }
 
 .font-box {
@@ -198,15 +197,61 @@ nav {
   text-align: center;
 }
 
-/* Undesireables */
-.image-search {
-  margin-top: 30px;
+.image-box {
+  width: 80%;
+  margin-bottom: 75px;
+}
+
+.image-holder {
+  border: 5px solid var(--charcoal);
+  background-color: var(--light);
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+  min-height: 350px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
+}
+
+.image-holder img {
+  border-radius: 10px;
+  margin: 15px 15px 15px 15px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
+}
+
+.image-box form {
+  width: 80%;
   text-align: center;
 }
 
-.save-image {
-  width: 100%;
+.image-input {
+  width: 400px;
+  border-radius: 10px;
+  border: 3px solid var(--charcoal);
+  padding: 10px 10px 10px 10px;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin: auto;
 }
+
+.image-button {
+  padding: 6px 0px 7px 0px;
+}
+
+/* button {
+  margin: 30px 10px 15px 10px;
+  padding: 10px 0px 10px 0px;
+  width: 250px;
+  border-radius: 10px;
+  border: 3px solid var(--lightBlue);
+  background-color: var(--darkBlue);
+  color: var(--yellow);
+  font-size: 25px;
+  font-weight: 500;
+} */
+
+/* Undesireables */
+
 
 .color-palette {
   margin-top: 30px;
