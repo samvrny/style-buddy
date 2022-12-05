@@ -49,6 +49,33 @@ code {
   flex-direction: column;
 }
 
+button {
+  margin: 30px 10px 15px 10px;
+  padding: 10px 0px 10px 0px;
+  width: 250px;
+  border-radius: 10px;
+  border: 3px solid var(--lightBlue);
+  background-color: var(--darkBlue);
+  color: var(--yellow);
+  font-size: 25px;
+  font-weight: 500;
+}
+
+button:disabled {
+  opacity: 60%;
+}
+
+button:hover:disabled {
+  border: 3px solid var(--lightBlue);
+  background-color: var(--darkBlue);
+  color: var(--yellow);
+}
+
+button:hover {
+  border: 3px solid var(--yellow);
+  color: var(--crayolaYellow);
+}
+
 /* Header and navigation styles */
 
 header {
@@ -112,44 +139,46 @@ nav {
   height: 100%;
   font-weight: bold;
   font-style: oblique;
-  font-size: 24px;
+  font-size: 30px;
   color: var(--charcoal);
 }
 
-.color-box h3 {
+.colors p {
+  -webkit-text-stroke: 0.3px var(--yellow);
+}
+
+.color-box h3, .image-box h3 {
   font-size: 50px;
   margin-top: 50px;
   margin-bottom: 25px;
   margin-right: 65%;
 }
 
-.color-box button {
-  margin: 30px 10px 15px 10px;
-  padding: 10px 0px 10px 0px;
-  width: 250px;
-  border-radius: 10px;
-  border: 3px solid var(--lightBlue);
-  background-color: var(--darkBlue);
-  color: var(--yellow);
-  font-size: 25px;
-  font-weight: 500;
+.font-box {
+  margin-top: 85px;
+  width: 45%;
 }
 
-.color-box button:disabled {
-  opacity: 60%;
+.displayed-font {
+  border: 5px solid var(--charcoal);
+  background-color: var(--light);
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+  min-height: 150px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
+  font-size: 65px;
+  text-align: center;
 }
 
-.color-box button:hover:disabled {
-  border: 3px solid var(--lightBlue);
-  background-color: var(--darkBlue);
-  color: var(--yellow);
+.font-box h3 {
+  font-size: 50px;
+  width: 100%;
+  margin-left: 15%;
+  margin-bottom: 25px;
 }
 
-.color-box button:hover {
-  border: 3px solid var(--yellow);
-  color: var(--crayolaYellow);
-}
-
+/* Undesireables */
 .image-search {
   margin-top: 30px;
   text-align: center;
@@ -157,15 +186,6 @@ nav {
 
 .save-image {
   width: 100%;
-}
-
-.font-box {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.box {
-  font-size: 50px;
 }
 
 .color-palette {

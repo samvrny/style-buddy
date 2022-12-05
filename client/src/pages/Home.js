@@ -163,42 +163,46 @@ const Home = () => {
                             <p>{randomizedPalette.color1}</p>
                         </div>
                         <div className="colors flex2 column" style={{ backgroundColor: randomizedPalette.color2 }}>
-                            {randomizedPalette.color2}
+                            <p>{randomizedPalette.color2}</p>
                         </div>
                         <div className="colors flex2 column" style={{ backgroundColor: randomizedPalette.color3 }}>
-                            {randomizedPalette.color3}
+                            <p>{randomizedPalette.color3}</p>
                         </div>
                     </div>
                     <div>
-                    <button onClick={() => handleRandomColors()}>Randomize!</button>
-                    {onLoadColor || Auth.loggedIn() && (
-                        <button
-                            disabled={isSavedPalette}
-                            onClick={() => handleSavePalette(randomizedPalette)}>
-                            {isSavedPalette
-                                ? 'Palette Saved'
-                                : 'Save Palette'
-                            }
-                        </button>
-                    )}
-                    </div>
-                </section>
-                <section className='flex column'>
-                    <div className="font-box">
-                        <h3 className='sec-h3'>Fonts</h3>
-                        <div className="box" style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
-                        <button onClick={() => handleRandomFont()}>Randomize!</button>
-                        {onLoadFont || Auth.loggedIn() && (
+                        <button onClick={() => handleRandomColors()}>Randomize!</button>
+                        {onLoadColor || Auth.loggedIn() && (
                             <button
-                                className='media-575'
-                                disabled={isSavedFont}
-                                onClick={() => handleSaveFont(randomizedFont)}>
-                                {isSavedFont
-                                    ? 'Font Saved'
-                                    : 'Save Font'
+                                disabled={isSavedPalette}
+                                onClick={() => handleSavePalette(randomizedPalette)}>
+                                {isSavedPalette
+                                    ? 'Palette Saved'
+                                    : 'Save Palette'
                                 }
                             </button>
                         )}
+                    </div>
+                </section>
+                <section className='flex column'>
+                    <div className="font-box flex2 column">
+                        <h3>Font Finder</h3>
+                        <div className='displayed-font flex2'>
+                            <div style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
+                        </div>
+                        <div>
+                            <button onClick={() => handleRandomFont()}>Randomize!</button>
+                            {onLoadFont || Auth.loggedIn() && (
+                                <button
+                                    className='media-575'
+                                    disabled={isSavedFont}
+                                    onClick={() => handleSaveFont(randomizedFont)}>
+                                    {isSavedFont
+                                        ? 'Font Saved'
+                                        : 'Save Font'
+                                    }
+                                </button>
+                            )}
+                        </div>
                     </div>
                     <div className='image-box'>
                         <form onSubmit={handlePhotoData} className="image-search">
