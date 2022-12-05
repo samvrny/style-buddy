@@ -1,12 +1,18 @@
 :root {
-  --light: #dfe0e2;
+  --light: #F7FFF7;
   --dark: #AAAAAA;
   --darkBlue: #006BA6;
   --primary: purple;
   --secondary: #B7999C;
   --white: whitesmoke;
   --yellow: #FFBC42;
+  --crayolaYellow: #FFE66D;
+  --deepBlue: #2F3061;
+  --steelBlue: #6CA6C1;
+  --charcoal: #343434;
   --lightBlue: #0496FF;
+  --ruby: #D81159;
+  --fireRed: #FF1D15;
 }
 
 body {
@@ -23,6 +29,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Universal styles */
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.flex2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.column {
+  flex-direction: column;
+}
+
+/* Header and navigation styles */
 
 header {
   background-color: var(--darkBlue);
@@ -45,6 +72,10 @@ nav {
   font-size: 40px;
 }
 
+.navbar-brand:hover {
+  color: var(--lightBlue);
+}
+
 .signup-links a {
   text-decoration: none;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -58,13 +89,30 @@ nav {
   color: var(--lightBlue);
 }
 
-.colors {
+/* Home styles */
+
+.color-box {
+  width: 90%;
+  flex-direction: column;
+}
+
+.palette-box {
   width: 100%;
-  margin: auto;
-  padding: 10px;
+  border: 5px solid var(--charcoal);
+  background-color: var(--charcoal);
+  border-radius: 50px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.colors {
   text-align: center;
+  width: 100%;
+  height: 100%;
   font-weight: bold;
   font-style: oblique;
+  font-size: 24px;
+  color: var(--charcoal);
 }
 
 button {
@@ -150,7 +198,7 @@ h5 {
   text-align: center;
 }
 
-/* FAVORITES */
+/* Favorites styles*/
 .favorites {
   text-align: center;
   font-family: cursive;
