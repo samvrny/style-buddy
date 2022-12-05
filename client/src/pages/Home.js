@@ -153,11 +153,22 @@ const Home = () => {
         setImageToSave(searchedImage.imageId)
     };
 
+    const loadWebFont = async () => {
+        WebFont.load({
+            google: {
+                families: ['Bungee Shade']
+            }
+        });
+    }
+
+    loadWebFont()
+
+
     return (
         <>
             <main className='flex column'>
                 <section className='color-box flex2'>
-                    <h3 className='fir-h3'>Palette Picker</h3>
+                    <h3 style={{ fontFamily: 'Bungee Shade' }} className='fir-h3'>Palette Picker</h3>
                     <div className='flex2 palette-box'>
                         <div className="colors flex2 column" style={{ backgroundColor: randomizedPalette.color1 }}>
                             <p>{randomizedPalette.color1}</p>
@@ -185,7 +196,7 @@ const Home = () => {
                 </section>
                 <section className='flex column'>
                     <div className="font-box flex2 column">
-                        <h3>Font Finder</h3>
+                        <h3 style={{ fontFamily: 'Bungee Shade' }}>Font Finder</h3>
                         <div className='displayed-font flex2'>
                             <div style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
                         </div>
@@ -207,7 +218,7 @@ const Home = () => {
                     <div className='image-box'>
                         <form onSubmit={handlePhotoData} className="image-search">
                             <div>
-                                <h3 className='sec-h3'>Images</h3>
+                                <h3 style={{ fontFamily: 'Bungee Shade' }}>Images</h3>
                                 <img className='image' src={searchedImage.small} alt="searched image"></img>
                             </div>
                             <div>

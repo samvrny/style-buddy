@@ -23,6 +23,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--light);
+  overflow-x: hidden;
 }
 
 code {
@@ -80,7 +81,7 @@ button:hover {
 
 header {
   background-color: var(--darkBlue);
-  height: 80px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,7 +97,7 @@ nav {
 .navbar-brand {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: var(--yellow);
-  font-size: 40px;
+  font-size: 60px;
 }
 
 .navbar-brand:hover {
@@ -108,7 +109,7 @@ nav {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: var(--yellow);
   margin: 0px 8px 0px 8px;
-  font-size: 25px;
+  font-size: 32px;
 }
 
 .signup-links a:hover {
@@ -121,6 +122,7 @@ nav {
 .color-box {
   width: 90%;
   flex-direction: column;
+  margin-top: 75px;
 }
 
 .palette-box {
@@ -147,11 +149,18 @@ nav {
   -webkit-text-stroke: 0.3px var(--yellow);
 }
 
-.color-box h3, .image-box h3 {
+.image-box h3 {
   font-size: 50px;
   margin-top: 50px;
   margin-bottom: 25px;
   margin-right: 65%;
+}
+
+.font-box h3, .color-box h3 {
+  font-size: 50px;
+  width: 100%;
+  margin-left: 15%;
+  margin-bottom: 25px;
 }
 
 .font-box {
@@ -169,13 +178,6 @@ nav {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
   font-size: 65px;
   text-align: center;
-}
-
-.font-box h3 {
-  font-size: 50px;
-  width: 100%;
-  margin-left: 15%;
-  margin-bottom: 25px;
 }
 
 /* Undesireables */

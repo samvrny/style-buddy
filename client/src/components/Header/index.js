@@ -9,13 +9,23 @@ const Header = () => {
     Auth.logout();
   };
 
+  const loadWebFont = async () => {
+    WebFont.load({
+      google: {
+        families: ['Nosifer', 'Bungee Shade']
+      }
+    });
+  }
+
+  loadWebFont()
+
   return (
     <header>
       <nav>
         <div className='title'>
           <Link to="/">
-            <a className="navbar-brand link"><span className="style">Style</span>
-              <span className="buddy">Buddy</span>
+            <a className="navbar-brand link"><span style={{ fontFamily: 'Nosifer' }} className="style">Style</span>
+              <span style={{ fontFamily: 'Nosifer' }} className="buddy">Buddy</span>
             </a>
           </Link>
         </div>
