@@ -153,8 +153,20 @@ const Home = () => {
         setImageToSave(searchedImage.imageId)
     };
 
+    const loadWebFont = async () => {
+        WebFont.load({
+            google: {
+                families: ['Bungee Shade']
+            }
+        });
+    }
+
+    loadWebFont()
+
+
     return (
         <>
+<<<<<<< HEAD
             <div className="container">
                 <div className=" row color-palette">
                     <div className="col-12">
@@ -165,13 +177,23 @@ const Home = () => {
 >>>>>>> main
                         <div className="colors" style={{ backgroundColor: randomizedPalette.color1 }}>
                             {randomizedPalette.color1}
+=======
+            <main className='flex column'>
+                <section className='color-box flex2'>
+                    <h3 style={{ fontFamily: 'Bungee Shade' }} className='fir-h3'>Palette Picker</h3>
+                    <div className='flex2 palette-box'>
+                        <div className="colors flex2 column" style={{ backgroundColor: randomizedPalette.color1 }}>
+                            <p>{randomizedPalette.color1}</p>
+>>>>>>> main
                         </div>
-                        <div className="colors" style={{ backgroundColor: randomizedPalette.color2 }}>
-                            {randomizedPalette.color2}
+                        <div className="colors flex2 column" style={{ backgroundColor: randomizedPalette.color2 }}>
+                            <p>{randomizedPalette.color2}</p>
                         </div>
-                        <div className="colors" style={{ backgroundColor: randomizedPalette.color3 }}>
-                            {randomizedPalette.color3}
+                        <div className="colors flex2 column" style={{ backgroundColor: randomizedPalette.color3 }}>
+                            <p>{randomizedPalette.color3}</p>
                         </div>
+                    </div>
+                    <div>
                         <button onClick={() => handleRandomColors()}>Randomize!</button>
                         {onLoadColor || Auth.loggedIn() && (
                             <button
@@ -184,6 +206,7 @@ const Home = () => {
                             </button>
                         )}
                     </div>
+<<<<<<< HEAD
                 </div>
             </div>
 <<<<<<< HEAD
@@ -202,11 +225,54 @@ const Home = () => {
                     <h3 className='sec-h3'>Images</h3>
                         <img className='image' src={searchedImage.small} alt="searched image"></img>
 >>>>>>> main
+=======
+                </section>
+                <section className='flex column'>
+                    <div className="font-box flex2 column">
+                        <h3 style={{ fontFamily: 'Bungee Shade' }}>Font Finder</h3>
+                        <div className='displayed-font flex2'>
+                            <div style={{ fontFamily: randomizedFont }}>{randomizedFont}</div>
+                        </div>
+                        <div>
+                            <button onClick={() => handleRandomFont()}>Randomize!</button>
+                            {onLoadFont || Auth.loggedIn() && (
+                                <button
+                                    className='media-575'
+                                    disabled={isSavedFont}
+                                    onClick={() => handleSaveFont(randomizedFont)}>
+                                    {isSavedFont
+                                        ? 'Font Saved'
+                                        : 'Save Font'
+                                    }
+                                </button>
+                            )}
+                        </div>
+>>>>>>> main
                     </div>
-                    <div>
-                        <input type="text" placeholder="Image Keyword" name="searchInput" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
-                        <button className="mt-2 mx-2" type='submit'>Submit</button>
+                    <div className='image-box'>
+                        <form onSubmit={handlePhotoData} className="image-search">
+                            <div>
+                                <h3 style={{ fontFamily: 'Bungee Shade' }}>Images</h3>
+                                <img className='image' src={searchedImage.small} alt="searched image"></img>
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Image Keyword" name="searchInput" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+                                <button className="mt-2 mx-2" type='submit'>Submit</button>
+                            </div>
+                        </form>
+                        {onLoadImage || Auth.loggedIn() && (
+                            <button
+                                disabled={isSavedImage}
+                                className="save-image"
+                                onClick={() => handleSaveImage(searchedImage)}>
+                                {isSavedImage
+                                    ? 'Image Saved'
+                                    : 'Save Image'
+                                }
+                            </button>
+                        )}
                     </div>
+<<<<<<< HEAD
                 </form>
                 {onLoadImage || Auth.loggedIn() && (
                     <button 
@@ -246,6 +312,10 @@ const Home = () => {
                     )}
                 </div>
             </div>
+=======
+                </section>
+            </main>
+>>>>>>> main
         </>
     );
 };

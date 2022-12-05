@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import WebFont from 'webfontloader';
 import Auth from '../../utils/auth';
 
 const Header = () => {
@@ -9,31 +9,43 @@ const Header = () => {
     Auth.logout();
   };
 
-  return (
-    <header className="nav-back">
-      <nav className="container navbar d-flex justify-content-between mx-0">
-        <Link to="/">
-          <a className="navbar-brand link"><span className="style">Style</span>
-          <span className="buddy">Buddy</span>
-          </a>
-        </Link>
+  const loadWebFont = async () => {
+    WebFont.load({
+      google: {
+        families: ['Nosifer', 'Bungee Shade']
+      }
+    });
+  }
 
-        <div>
+  loadWebFont()
+
+  return (
+    <header>
+      <nav>
+        <div className='title'>
+          <Link to="/">
+            <a className="navbar-brand link"><span style={{ fontFamily: 'Nosifer' }} className="style">Style</span>
+              <span style={{ fontFamily: 'Nosifer' }} className="buddy">Buddy</span>
+            </a>
+          </Link>
+        </div>
+
+        <div className='signup-links'>
           {Auth.loggedIn() ? (
             <>
-              <Link to="/favorites" className="link">My Favorites</Link>
-              <a href="/" className="link pl-2" onClick={logout}>
+              <Link to="/favorites" className='link'>My Favorites</Link>
+              <a href="/" className='link' onClick={logout}>
                 Logout
               </a>
             </>
           ) : (
             <>
               <Link to="/login">
-                <a className="link">Login</a>
-                </Link>
+                <a className='signup-link'>Login</a>
+              </Link>
               <Link to="/signup">
-                <a className="pl-2 link">Sign Up</a>
-                </Link>
+                <a className='signup-link'>Sign Up</a>
+              </Link>
             </>
           )}
         </div>
