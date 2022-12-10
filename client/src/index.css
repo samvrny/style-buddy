@@ -275,46 +275,15 @@ nav {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
 }
 
-/* SIGN UP STYLES */
-.sign-up {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.sign-up-card {
-  background-color: var(--secondary);
-  text-align: center;
-}
-
 /* Favorites styles*/
 .favorites {
   text-align: center;
-  font-family: cursive;
-}
-
-h2 {
-  font-family: monospace;
-}
-
-.favorites-flex {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  font-size: 65px;
+  margin: 40px 0px 40px 0px;
 }
 
 .width {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.center {
-  text-align: center;
-}
-
-.font-size {
-  font-size: 40px;
+  width: 85%;
 }
 
 .image-container {
@@ -324,6 +293,8 @@ h2 {
   align-items: center;
   margin-bottom: 18px;
 }
+
+/* MEDIA QUERIES */
 
 @media screen and (max-width: 1350px) {
   .signup-flex {

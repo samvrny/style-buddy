@@ -17,7 +17,7 @@ const Favorites = () => {
     const loadWebFont = async (font) => {
         WebFont.load({
             google: {
-                families: [font.chosenFont]
+                families: [font.chosenFont, 'Bungee Shade']
             }
         });
     }
@@ -71,10 +71,12 @@ const Favorites = () => {
         }
     }
 
+    loadWebFont()
+
     return (
-        <main>
-            <h1 className="favorites">Favorites</h1>
-            <div>
+        <main className='flex2 column'>
+            <h1 style={{ fontFamily: 'Bungee Shade' }} className="favorites">My Styles</h1>
+            <div className='width'>
                 <h5>My Color Palettes</h5>
                 {!userData.savedPalettes.length && (
                     <p>Please save some color palettes</p>
@@ -82,7 +84,7 @@ const Favorites = () => {
                 {userData.savedPalettes.map((palette) => {
 
                     return (
-                        <section className='color-palette width' key={palette._id}>
+                        <section className='color-palette' key={palette._id}>
                             <div className='colors' style={{ backgroundColor: palette.color1 }}>{palette.color1}</div>
                             <div className='colors' style={{ backgroundColor: palette.color2 }}>{palette.color2}</div>
                             <div className='colors' style={{ backgroundColor: palette.color3 }}>{palette.color3}</div>
@@ -91,7 +93,7 @@ const Favorites = () => {
                     )
                 })}
             </div>
-            <div className='center'>
+            <div className='width'>
                 <h5>My Fonts</h5>
                 {!userData.savedFonts.length && (
                     <p>Please save some fonts</p>
@@ -106,7 +108,7 @@ const Favorites = () => {
                     )
                 })}
             </div>
-            <div className='center'>
+            <div className='width'>
                 <h5>My Images</h5>
                 {!userData.savedImages.length && (
                     <p>Please save some images</p>
