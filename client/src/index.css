@@ -246,8 +246,8 @@ nav {
 /* LOGIN AND SIGNUP STYLES */
 
 .login-box {
-  margin: 60px auto 40px auto;
-  border: 3px solid var(--charcoal);
+  margin: 60px auto 60px auto;
+  border: 5px solid var(--charcoal);
   width: 700px;
   border-radius: 10px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);

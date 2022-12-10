@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-
+import WebFont from 'webfontloader';
 import Auth from '../utils/auth';
 
 const Signup = () => {
@@ -37,13 +37,21 @@ const Signup = () => {
     }
   };
 
+  const loadWebFont = async () => {
+    WebFont.load({
+      google: {
+        families: ['Bangers']
+      }
+    });
+  }
+
+  loadWebFont()
+
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-md-6 mt-5 sign-up">
-        <div className="card">
-          <h4 className="card-header sign-up-card">Sign Up</h4>
-          <div className="card-body">
-            <form className='signup-flex' onSubmit={handleFormSubmit}>
+    <main className='flex2 column login-box'>
+          <h4 style={{fontFamily: 'Bangers'}}>Sign Up</h4>
+          <div>
+            <form className='flex2 column login-form' onSubmit={handleFormSubmit}>
               <input
                 className="form-input"
                 placeholder="Your username"
@@ -71,15 +79,12 @@ const Signup = () => {
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button className="btn d-block w-100" type="submit">
+              <button type="submit">
                 Submit
               </button>
             </form>
-
             {error && <div>Signup failed</div>}
           </div>
-        </div>
-      </div>
     </main>
   );
 };

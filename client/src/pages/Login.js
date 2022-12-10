@@ -52,7 +52,7 @@ const Login = (props) => {
   return (
     <main className='flex2 column login-box'>
       <h4 style={{fontFamily: 'Bangers'}}>Login</h4>
-      <div className=''>
+      <div>
         <form className='flex2 column login-form' onSubmit={handleFormSubmit}>
           <input
             className="form-input"
@@ -76,7 +76,6 @@ const Login = (props) => {
             Submit
           </button>
         </form>
-
         {error && <div>Login failed</div>}
       </div>
     </main>
