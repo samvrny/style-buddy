@@ -238,29 +238,42 @@ nav {
   padding: 6px 0px 7px 0px;
 }
 
-/* Undesireables */
-
-
 .color-palette {
   margin-top: 30px;
   text-align: center;
 }
 
-/* LOGIN STYLES */
+/* LOGIN AND SIGNUP STYLES */
 
-.login {
- margin-left: auto;
- margin-right: auto;
+.login-box {
+  margin: 60px auto 40px auto;
+  border: 3px solid var(--charcoal);
+  width: 700px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
 }
+
+.login-box h4 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 55px;
+}
+
+.login-form {
+  margin-bottom: 30px;
+}
+
 .form-input {
-  margin: 5px;
+  border-radius: 10px;
+  border: 3px solid var(--charcoal);
+  padding: 10px 10px 10px 10px;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--charcoal);
+  width: 90%;
+  margin: 10px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
 }
-
-.login-card {
-  background-color: var(--secondary);
-  text-align: center;
-}
-
 
 /* SIGN UP STYLES */
 .sign-up {

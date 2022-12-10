@@ -163,7 +163,6 @@ const Home = () => {
 
     loadWebFont()
 
-
     return (
         <>
             <main className='flex column'>
