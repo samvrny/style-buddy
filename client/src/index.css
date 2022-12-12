@@ -238,11 +238,6 @@ nav {
   padding: 6px 0px 7px 0px;
 }
 
-.color-palette {
-  margin-top: 30px;
-  text-align: center;
-}
-
 /* LOGIN AND SIGNUP STYLES */
 
 .login-box {
@@ -276,10 +271,39 @@ nav {
 }
 
 /* Favorites styles*/
-.favorites {
+.favorites-header {
   text-align: center;
-  font-size: 65px;
-  margin: 40px 0px 40px 0px;
+  font-size: 75px;
+  margin: 40px 0px 20px 0px;
+}
+
+.group-title {
+  text-align: center;
+  font-size: 50px;
+  margin: 60px 0px 25px 0px;
+}
+
+.favorites-container {
+  width: 100%;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
+  border-radius: 10px;
+  border: 5px solid var(--charcoal);
+  padding: 20px 20px 20px 20px;
+}
+
+.color-palette {
+  border-radius: 10px;
+  border: 5px solid var(--charcoal);
+  background-color: var(--charcoal);
+  overflow: hidden;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
+  -webkit-text-stroke: 0.3px var(--yellow);
+  margin: 15px;
+}
+
+.around {
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .width {

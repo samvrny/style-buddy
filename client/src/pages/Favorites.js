@@ -17,7 +17,7 @@ const Favorites = () => {
     const loadWebFont = async (font) => {
         WebFont.load({
             google: {
-                families: [font.chosenFont, 'Bungee Shade']
+                families: [font.chosenFont]
             }
         });
     }
@@ -36,7 +36,7 @@ const Favorites = () => {
             await removePalette({
                 variables: { id }
             })
-        } catch(err) {
+        } catch (err) {
             console.error(err);
         }
     };
@@ -51,7 +51,7 @@ const Favorites = () => {
             await removeFont({
                 variables: { chosenFont }
             })
-        } catch(err) {
+        } catch (err) {
             console.error(err);
         }
     }
@@ -66,7 +66,7 @@ const Favorites = () => {
             await removeImage({
                 variables: { imageId }
             })
-        } catch(err) {
+        } catch (err) {
             console.error(err);
         }
     }
@@ -75,26 +75,28 @@ const Favorites = () => {
 
     return (
         <main className='flex2 column'>
-            <h1 style={{ fontFamily: 'Bungee Shade' }} className="favorites">My Styles</h1>
+            <h1 style={{ fontFamily: 'Nosifer' }} className="favorites-header">My Styles</h1>
             <div className='width'>
-                <h5>My Color Palettes</h5>
-                {!userData.savedPalettes.length && (
-                    <p>Please save some color palettes</p>
-                )}
-                {userData.savedPalettes.map((palette) => {
+                <h5 style={{ fontFamily: 'Bungee Shade' }} className='group-title'>My Color Palettes</h5>
+                <div className='flex2 favorites-container around'>
+                    {!userData.savedPalettes.length && (
+                        <p>Please save some color palettes</p>
+                    )}
+                    {userData.savedPalettes.map((palette) => {
 
-                    return (
-                        <section className='color-palette' key={palette._id}>
-                            <div className='colors' style={{ backgroundColor: palette.color1 }}>{palette.color1}</div>
-                            <div className='colors' style={{ backgroundColor: palette.color2 }}>{palette.color2}</div>
-                            <div className='colors' style={{ backgroundColor: palette.color3 }}>{palette.color3}</div>
-                            <button onClick={() => handleRemovePalette(palette.id)}>Remove Palette</button>
-                        </section>
-                    )
-                })}
+                        return (
+                            <section className='color-palette' key={palette._id}>
+                                <div className='colors' style={{ backgroundColor: palette.color1 }}>{palette.color1}</div>
+                                <div className='colors' style={{ backgroundColor: palette.color2 }}>{palette.color2}</div>
+                                <div className='colors' style={{ backgroundColor: palette.color3 }}>{palette.color3}</div>
+                                <button onClick={() => handleRemovePalette(palette.id)}>Remove Palette</button>
+                            </section>
+                        )
+                    })}
+                </div>
             </div>
             <div className='width'>
-                <h5>My Fonts</h5>
+                <h5 style={{ fontFamily: 'Bungee Shade' }} className='group-title'>My Fonts</h5>
                 {!userData.savedFonts.length && (
                     <p>Please save some fonts</p>
                 )}
@@ -109,7 +111,7 @@ const Favorites = () => {
                 })}
             </div>
             <div className='width'>
-                <h5>My Images</h5>
+                <h5 style={{ fontFamily: 'Bungee Shade' }} className='group-title'>My Images</h5>
                 {!userData.savedImages.length && (
                     <p>Please save some images</p>
                 )}
