@@ -17,7 +17,7 @@ const Favorites = () => {
     const loadWebFont = async (font) => {
         WebFont.load({
             google: {
-                families: [font.chosenFont]
+                families: [font.chosenFont, 'Bungee Shade']
             }
         });
     }
@@ -115,6 +115,7 @@ const Favorites = () => {
             <div className='width'>
                 <h5 style={{ fontFamily: 'Bungee Shade' }} className='group-title'>My Images</h5>
                 <div className='flex2 favorites-container around scrollbar image-margin'>
+
                     {!userData.savedImages.length && (
                         <p>Please save some images</p>
                     )}
