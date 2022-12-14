@@ -114,7 +114,8 @@ const Favorites = () => {
             </div>
             <div className='width'>
                 <h5 style={{ fontFamily: 'Bungee Shade' }} className='group-title'>My Images</h5>
-                <div className='flex2 favorites-container around scrollbar'>
+                <div className='flex2 favorites-container around scrollbar image-margin'>
+
                     {!userData.savedImages.length && (
                         <p>Please save some images</p>
                     )}
@@ -127,7 +128,6 @@ const Favorites = () => {
                         )
                     })}
                 </div>
-
             </div>
         </main>
     );
