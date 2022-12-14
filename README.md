@@ -18,6 +18,7 @@ While on the homepage, the user can create an account or login using the "login"
 
 You can visit the deployed version of the application here: [Style Buddy](https://protected-chamber-44327.herokuapp.com/).
 
+
 ![](./assets/images/sb1.png)
 
 ![](./assets/images/sb2.png)
