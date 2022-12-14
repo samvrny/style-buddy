@@ -17,7 +17,7 @@ const Favorites = () => {
     const loadWebFont = async (font) => {
         WebFont.load({
             google: {
-                families: [font.chosenFont]
+                families: [font.chosenFont, 'Bungee Shade']
             }
         });
     }
@@ -127,6 +127,7 @@ const Favorites = () => {
                         )
                     })}
                 </div>
+
             </div>
         </main>
     );
