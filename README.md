@@ -18,13 +18,13 @@ While on the homepage, the user can create an account or login using the "login"
 
 You can visit the deployed version of the application here: [Style Buddy](https://protected-chamber-44327.herokuapp.com/).
 
-![](./assets/images/sb1.PNG)
+![](./assets/images/sb1.png)
 
-![](./assets/images/sb2.PNG)
+![](./assets/images/sb2.png)
 
-![](./assets/images/sb3.PNG)
+![](./assets/images/sb3.png)
 
-![](./assets/images/sb4.PNG)
+![](./assets/images/sb4.png)
 
 ![](./assets/images/sb5.png)
 
