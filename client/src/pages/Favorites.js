@@ -78,7 +78,7 @@ const Favorites = () => {
             <h1 style={{ fontFamily: 'Nosifer' }} className="favorites-header">My Styles</h1>
             <div className='width'>
                 <h5 style={{ fontFamily: 'Bungee Shade' }} className='group-title'>My Color Palettes</h5>
-                <div className='flex2 favorites-container around'>
+                <div className='flex2 favorites-container around scrollbar'>
                     {!userData.savedPalettes.length && (
                         <p>Please save some color palettes</p>
                     )}
@@ -89,7 +89,7 @@ const Favorites = () => {
                                 <div className='colors' style={{ backgroundColor: palette.color1 }}>{palette.color1}</div>
                                 <div className='colors' style={{ backgroundColor: palette.color2 }}>{palette.color2}</div>
                                 <div className='colors' style={{ backgroundColor: palette.color3 }}>{palette.color3}</div>
-                                <button onClick={() => handleRemovePalette(palette.id)}>Remove Palette</button>
+                                <button className='remove-button' onClick={() => handleRemovePalette(palette.id)}>Remove Palette</button>
                             </section>
                         )
                     })}
@@ -97,33 +97,36 @@ const Favorites = () => {
             </div>
             <div className='width'>
                 <h5 style={{ fontFamily: 'Bungee Shade' }} className='group-title'>My Fonts</h5>
-                {!userData.savedFonts.length && (
-                    <p>Please save some fonts</p>
-                )}
-                {userData.savedFonts.map((font) => {
-                    loadWebFont(font);
-                    return (
-                        <section key={font._id}>
-                            <div className='font-size' style={{ fontFamily: font.chosenFont }}>{font.chosenFont}</div>
-                            <button onClick={() => handleRemoveFont(font.chosenFont)}>Remove Font</button>
-                        </section>
-                    )
-                })}
+                <div className='flex2 favorites-container around scrollbar'>
+                    {!userData.savedFonts.length && (
+                        <p>Please save some fonts</p>
+                    )}
+                    {userData.savedFonts.map((font) => {
+                        loadWebFont(font);
+                        return (
+                            <section className='saved-font' key={font._id}>
+                                <div style={{ fontFamily: font.chosenFont }}>{font.chosenFont}</div>
+                                <button className='remove-button' onClick={() => handleRemoveFont(font.chosenFont)}>Remove Font</button>
+                            </section>
+                        )
+                    })}
+                </div>
             </div>
             <div className='width'>
                 <h5 style={{ fontFamily: 'Bungee Shade' }} className='group-title'>My Images</h5>
-                {!userData.savedImages.length && (
-                    <p>Please save some images</p>
-                )}
-                {userData.savedImages.map((image) => {
-                    return (
-                        <section className='image-container' key={image._id}>
-                            <h6>By {image.photographer}</h6>
-                            <img src={image.small} alt={image.alt}></img>
-                            <button onClick={() => handleRemoveImage(image.imageId)}>Remove Image</button>
-                        </section>
-                    )
-                })}
+                <div className='flex2 favorites-container around scrollbar'>
+                    {!userData.savedImages.length && (
+                        <p>Please save some images</p>
+                    )}
+                    {userData.savedImages.map((image) => {
+                        return (
+                            <section className='flex2 column image-container' key={image._id}>
+                                <img className='saved-image' src={image.small} alt={image.alt}></img>
+                                <button className='remove-button' onClick={() => handleRemoveImage(image.imageId)}>Remove Image</button>
+                            </section>
+                        )
+                    })}
+                </div>
             </div>
         </main>
     );
