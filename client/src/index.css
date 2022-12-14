@@ -144,6 +144,10 @@ nav {
   margin-top: 75px;
 }
 
+.align {
+  text-align: center;
+}
+
 .palette-box {
   width: 100%;
   border: 5px solid var(--charcoal);
@@ -336,6 +340,11 @@ nav {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
   border-radius: 10px;
   border: 5px solid var(--charcoal);
+  overflow: hidden;
+}
+
+.image-margin {
+  margin-bottom: 75px;
 }
 
 .saved-font {
@@ -359,61 +368,6 @@ nav {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.30);
   border-radius: 10px;
   margin-top: 20px;
-}
-
-/* MEDIA QUERIES */
-
-@media screen and (max-width: 1350px) {
-  .signup-flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .form-input {
-    width: 90%;
-  }
-}
-
-@media screen and (max-width: 786px) {
-  .flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-  }
-
-  .login-flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .sec-h3 {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 25px;
-  }
-
-  .fir-h3 {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .image {
-    margin-bottom: 15px;
-  }
-}
-
-@media screen and (max-width: 575px) {
-  .media-575 {
-    margin-bottom: 40px;
-  }
 }
 
 

@@ -167,7 +167,7 @@ const Home = () => {
         <>
             <main className='flex column'>
                 <section className='color-box flex2'>
-                    <h3 style={{ fontFamily: 'Bungee Shade' }} className='fir-h3'>Palette Picker</h3>
+                    <h3 style={{ fontFamily: 'Bungee Shade' }}>Palette Picker</h3>
                     <div className='flex2 palette-box'>
                         <div className="colors flex2 column" style={{ backgroundColor: randomizedPalette.color1 }}>
                             <p>{randomizedPalette.color1}</p>
@@ -179,7 +179,7 @@ const Home = () => {
                             <p>{randomizedPalette.color3}</p>
                         </div>
                     </div>
-                    <div>
+                    <div className='align'>
                         <button onClick={() => handleRandomColors()}>Randomize!</button>
                         {onLoadColor || Auth.loggedIn() && (
                             <button
