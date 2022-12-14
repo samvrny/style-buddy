@@ -83,7 +83,7 @@ const Signup = () => {
                 Submit
               </button>
             </form>
-            {error && <div>Signup failed</div>}
+            {error && <div className='login-failed'>Signup failed! Please try again</div>}
           </div>
     </main>
   );
